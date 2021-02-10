@@ -1,0 +1,63 @@
+header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #eee;
+   img {
+      height: 40px;
+   }
+}
+
+.container {
+   > div {
+      margin: 10px 0;
+      padding: 5px;
+      border: 1px solid #eee;
+   }
+}
+
+.hero-banner {
+   img {
+      height: 575px;
+      width: 100%;
+      object-fit: cover;
+   }
+}
+
+.offer-list {
+   display: flex;
+   flex-wrap: wrap;
+}
+.offer-card {
+   display: flex;
+   flex-direction: column;
+   border: 1px solid lightpink;
+   > :nth-child(1) {
+      display: flex;
+      img {
+         height: 25px;
+         width: 25px;
+         border-radius: 50%;
+         object-fit: cover;
+      }
+   }
+   > :nth-child(2) {
+      height: 300px;
+      width: 200px;
+      object-fit: cover;
+   }
+   > :nth-child(3) {
+      display: flex;
+      justify-content: space-between;
+      :first-child {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+      }
+      :last-child {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+      }
+   }
+}
