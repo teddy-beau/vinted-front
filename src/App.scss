@@ -1,49 +1,89 @@
 header {
+   height: 60px;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   background-color: #eee;
    img {
       height: 40px;
    }
 }
 
 .container {
-   > div {
-      margin: 10px 0;
-      padding: 5px;
-      border: 1px solid #eee;
-   }
+   width: 1280px;
+   margin: 0 auto;
 }
 
 .hero-banner {
    img {
-      height: 575px;
+      height: 500px;
       width: 100%;
       object-fit: cover;
+      position: static;
+      z-index: -1;
+   }
+   > div {
+      //   position: relative;
+      > div {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-around;
+         background-color: #fff;
+         height: 220px;
+         width: 360px;
+         padding: 25px;
+         border-radius: 3px;
+         box-shadow: 0 0 2px rgba(17, 17, 17, 0.2);
+         position: absolute;
+         top: calc((500px - 220px) / 2 + 30px);
+         h1 {
+            font-size: 34px;
+            font-weight: 600;
+         }
+         div {
+            width: 180px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 300;
+            color: #fff;
+            padding: 10px;
+            background-color: #21adb6;
+            border-radius: 5px;
+            cursor: pointer;
+         }
+      }
    }
 }
 
 .offer-list {
    display: flex;
    flex-wrap: wrap;
+   margin-top: 30px;
 }
 .offer-card {
    display: flex;
    flex-direction: column;
-   border: 1px solid lightpink;
+   width: 235px;
+   padding: 7px;
+   margin-bottom: 20px;
    > :nth-child(1) {
       display: flex;
+      align-items: center;
+      padding: 10px;
       img {
          height: 25px;
          width: 25px;
          border-radius: 50%;
          object-fit: cover;
+         margin-right: 10px;
+      }
+      div {
+         font-size: 12px;
+         color: #999;
       }
    }
    > :nth-child(2) {
-      height: 300px;
-      width: 200px;
+      height: 360px;
+      width: 100%;
       object-fit: cover;
    }
    > :nth-child(3) {
@@ -53,11 +93,123 @@ header {
          display: flex;
          flex-direction: column;
          justify-content: space-between;
+         > :nth-child(1) {
+            font-size: 14px;
+         }
+         > :nth-child(2) {
+            font-size: 12px;
+            color: #999;
+         }
+         > :nth-child(3) {
+            font-size: 12px;
+            color: #999;
+         }
       }
       :last-child {
          display: flex;
          flex-direction: column;
          justify-content: space-between;
       }
+   }
+}
+
+.offer-body {
+   background-color: #ebedee;
+   height: calc(100vh - 60px);
+}
+.offer-details {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   padding: 30px;
+   > :first-child {
+      img {
+         max-height: 600px;
+         max-width: 450px;
+      }
+   }
+   > :last-child {
+      box-sizing: border-box;
+      max-width: 400px;
+      background-color: #fff;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      > :nth-child(1) {
+         font-size: 24px;
+         margin-bottom: 20px;
+         font-weight: 600;
+      }
+      > :nth-child(2) {
+         font-size: 14px;
+         text-transform: uppercase;
+         padding: 0 0 40px 0;
+         border-bottom: 1px solid #eee;
+         margin-bottom: 40px;
+         > li {
+            display: flex;
+            padding-top: 3px;
+            > span:first-child {
+               flex: 1;
+               color: #999;
+               font-weight: 300;
+            }
+            > span:last-child {
+               flex: 1;
+               color: #666;
+               font-weight: 600;
+            }
+         }
+      }
+      > :nth-child(3) {
+         font-size: 16px;
+         font-weight: 600;
+         margin-bottom: 15px;
+      }
+      > :nth-child(4) {
+         font-size: 16px;
+         font-weight: 300;
+         color: #666;
+         margin-bottom: 20px;
+      }
+      > :nth-child(5) {
+         display: flex;
+         align-items: center;
+         font-size: 16px;
+         font-weight: 400;
+         margin-bottom: 40px;
+         img {
+            height: 50px;
+            width: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+         }
+      }
+      > button {
+         font-size: 16px;
+         font-weight: 300;
+         color: #fff;
+         padding: 10px;
+         background-color: #21adb6;
+         border: none;
+         border-radius: 5px;
+      }
+   }
+}
+
+footer {
+   padding: 50px 0;
+   font-size: 12px;
+   font-weight: 300;
+   color: #999;
+   text-align: center;
+   strong,
+   a {
+      font-weight: 600;
+      color: #999;
+   }
+   a:hover {
+      text-decoration: underline;
    }
 }

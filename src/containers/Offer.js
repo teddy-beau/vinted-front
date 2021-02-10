@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -26,13 +26,41 @@ const Offer = () => {
    return isLoading ? (
       <div>Loading...</div>
    ) : (
-      <div className="container">
-         <div>
-            Offer <Link to="/">Go to home</Link>
-         </div>
-         <div>
-            <div>{data.product_name}</div>
-            <div></div>
+      <div className="offer-body">
+         <div className="container offer-details">
+            <div>
+               <img
+                  src={
+                     data.product_image[0].picture1
+                        ? data.product_image[0].picture1.secure_url
+                        : data.product_image[1].picture1.secure_url
+                  }
+                  alt="Product"
+               />
+            </div>
+            <div>
+               <div>{data.product_price.toFixed(2).replace(".", ",")} €</div>
+               <ul>
+                  {data.product_details.map((elem, index) => {
+                     return (
+                        <li>
+                           <span>{Object.keys(elem)}</span>
+                           <span>{elem[Object.keys(elem)]}</span>
+                        </li>
+                     );
+                  })}
+               </ul>
+               <h1>{data.product_name}</h1>
+               <div>{data.product_description}</div>
+               <div>
+                  <img
+                     src={data.owner.account.avatar.secure_url}
+                     alt={`Avatar de ${data.owner.account.username}`}
+                  />
+                  <div>{data.owner.account.username}</div>
+               </div>
+               <button>Acheter</button>
+            </div>
          </div>
       </div>
    );
