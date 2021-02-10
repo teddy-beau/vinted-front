@@ -1,8 +1,31 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import Hero from "../components/Hero";
 
-const Home = ({ data }) => {
-   return (
+const Home = () => {
+   const [data, setData] = useState([]);
+   const [isLoading, setIsLoading] = useState(true);
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const response = await axios.get(
+               "https://vinted-clone.herokuapp.com/offers"
+            );
+            setData(response.data);
+            setIsLoading(false);
+         } catch (error) {
+            alert("An error occured while fetching the data");
+         }
+      };
+      fetchData();
+   }, []);
+
+   return isLoading ? (
+      <div>Loading...</div>
+   ) : (
       <div className="container">
          <div>
             Home <Link to="/offer">Go to offer</Link>
@@ -11,7 +34,7 @@ const Home = ({ data }) => {
          <div className="offer-list">
             {data.offers.map((offer) => {
                return (
-                  <Link to={`/offer/:${offer._id}`}>
+                  <Link to={`/offer/${offer._id}`}>
                      <div className="offer-card" key={offer._id}>
                         <div>
                            <img
