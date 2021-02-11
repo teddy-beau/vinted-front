@@ -29,14 +29,7 @@ const Offer = () => {
       <div className="offer-body">
          <div className="container offer-details">
             <div>
-               <img
-                  src={
-                     data.product_image[0].picture1
-                        ? data.product_image[0].picture1.secure_url
-                        : data.product_image[1].picture1.secure_url
-                  }
-                  alt="Product"
-               />
+               <img src={data.product_pictures[0].secure_url} alt="Product" />
             </div>
             <div>
                <div>{data.product_price.toFixed(2).replace(".", ",")} €</div>
