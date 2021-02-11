@@ -11,9 +11,25 @@ const Header = ({ currentUser, userToken }) => {
             <div className="search-bar">
                <input type="search" placeholder="Rechercher des articles" />
             </div>
-            <Link to="/signup">S'inscrire</Link>
-            <Link to="/login">Se connecter</Link>
-            <Link>Vends tes articles</Link>
+            {!userToken && (
+               <Link className="white-button" to="/signup">
+                  S'inscrire
+               </Link>
+            )}
+            {!userToken && (
+               <Link className="white-button" to="/login">
+                  Se connecter
+               </Link>
+            )}
+            {userToken && (
+               <div className="red-button" onClick={() => currentUser(null)}>
+                  Se deconnecter
+               </div>
+            )}
+
+            <Link className="blue-button" to="/">
+               Vends tes articles
+            </Link>
          </header>
       </div>
    );

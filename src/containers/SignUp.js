@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
@@ -10,29 +10,7 @@ const SignUp = () => {
    // Function to avoid refresh on submit
    const handleSubmit = (event) => {
       event.preventDefault();
-      // Axios request
-      const sendData = async () => {
-         try {
-            const response = await axios.post(
-               "https://vinted-clone.herokuapp.com/user/signup",
-               {
-                  username: inputUsername,
-                  email: inputEmail,
-                  password: inputPassword,
-               }
-            );
-            const token = response.data.token;
-            // SETUSER + HISTORY PUSH
-            // setIsLoading(false);
-         } catch (error) {
-            alert("An error occured when posting the data");
-         }
-      };
-      sendData();
    };
-
-   // const [isLoading, setIsLoading] = useState(true);
-   // useEffect(() => {}, []);
 
    return (
       <div className="container">

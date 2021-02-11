@@ -1,36 +1,40 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
 const Login = ({ currentUser }) => {
+   //Form input
    const [inputEmail, setInputEmail] = useState("");
    const [inputPassword, setInputPassword] = useState("");
-
+   // Pour quoi faire ?
    const history = useHistory();
-
+   // Data received from server
    const [data, setData] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
 
-   useEffect(() => {
-      const handleSubmit = (event) => {
-         event.preventDefault();
-         const sendData = async () => {
-            const response = await axios.post(
-               "https://vinted-clone.herokuapp.com/user/login",
-               {
-                  email: inputEmail,
-                  password: inputPassword,
-               }
-            );
-            setData(response.data);
-            setIsLoading(false);
-         };
-         sendData();
+   const handleSubmit = (event) => {
+      event.preventDefault();
+      const fetchData = async () => {
+         const response = await axios.post(
+            "https://vinted-clone.herokuapp.com/user/login",
+            {
+               email: inputEmail,
+               password: inputPassword,
+            }
+         );
+         console.log("response.data", response.data);
+         setData(response.data);
+         setIsLoading(false);
       };
-      const token = data.token;
-      currentUser(token);
-      history.pushState("/");
-   }, []);
+      fetchData();
+      if (!isLoading) {
+         console.log("data.token", data.token);
+         const token = data.token;
+         console.log("token", token);
+         currentUser(token);
+         history.push("/");
+      }
+   };
 
    return (
       <div className="container">

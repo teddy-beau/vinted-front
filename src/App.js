@@ -38,7 +38,7 @@ function App() {
                <Offer />
             </Route>
             <Route path="/signup">
-               <SignUp />
+               <SignUp currentUser={currentUser} />
             </Route>
             <Route path="/login">
                <Login currentUser={currentUser} />
