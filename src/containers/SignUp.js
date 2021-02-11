@@ -5,32 +5,27 @@ import { Link, useHistory } from "react-router-dom";
 const SignUp = ({ currentUser }) => {
    const [inputUsername, setInputUsername] = useState("");
    const [inputEmail, setInputEmail] = useState("");
+   const [inputPhone, setInputPhone] = useState("");
    const [inputPassword, setInputPassword] = useState("");
    const history = useHistory(); // To redirect upon submission
-   const [data, setData] = useState([]);
-   const [isLoading, setIsLoading] = useState(true);
 
-   const handleSubmit = (event) => {
+   const handleSubmit = async (event) => {
       event.preventDefault();
-      const fetchData = async () => {
+      try {
          const response = await axios.post(
             "https://vinted-clone.herokuapp.com/user/signup",
             {
                username: inputUsername,
                email: inputEmail,
+               phone: inputPhone,
                password: inputPassword,
             }
          );
-         console.log("response.data", response.data);
-         setData(response.data);
-         setIsLoading(false);
-      };
-      fetchData();
-      if (!isLoading) {
-         const token = data.token;
-         console.log("token", token);
-         currentUser(token);
+         console.log("response: ", response);
+         currentUser(response.data.token);
          history.push("/");
+      } catch (error) {
+         console.log(error);
       }
    };
 
@@ -56,6 +51,14 @@ const SignUp = ({ currentUser }) => {
                      setInputEmail(event.target.value);
                   }}
                   required
+               />
+               <input
+                  type="tel"
+                  placeholder="Téléphone"
+                  value={inputPhone}
+                  onChange={(event) => {
+                     setInputPhone(event.target.value);
+                  }}
                />
                <input
                   type="password"

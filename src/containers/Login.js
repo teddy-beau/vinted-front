@@ -6,12 +6,10 @@ const Login = ({ currentUser }) => {
    const [inputEmail, setInputEmail] = useState("");
    const [inputPassword, setInputPassword] = useState("");
    const history = useHistory(); // To redirect upon submission
-   const [data, setData] = useState([]);
-   const [isLoading, setIsLoading] = useState(true);
 
-   const handleSubmit = (event) => {
+   const handleSubmit = async (event) => {
       event.preventDefault();
-      const fetchData = async () => {
+      try {
          const response = await axios.post(
             "https://vinted-clone.herokuapp.com/user/login",
             {
@@ -19,16 +17,11 @@ const Login = ({ currentUser }) => {
                password: inputPassword,
             }
          );
-         // console.log("response.data", response.data);
-         setData(response.data);
-         setIsLoading(false);
-      };
-      fetchData();
-      if (!isLoading) {
-         const token = data.token;
-         // console.log("token", token);
-         currentUser(token);
+         // console.log("response: ", response);
+         currentUser(response.data.token);
          history.push("/");
+      } catch (error) {
+         console.log(error);
       }
    };
 

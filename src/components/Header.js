@@ -27,7 +27,10 @@ const Header = ({ currentUser, userToken }) => {
                </div>
             )}
 
-            <Link className="blue-button" to="/">
+            <Link
+               className="blue-button"
+               to={userToken ? "/offer/publish" : "/login"}
+            >
                Vends tes articles
             </Link>
          </header>

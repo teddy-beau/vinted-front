@@ -1,5 +1,10 @@
 import "./App.scss";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+   BrowserRouter as Router,
+   Switch,
+   Route,
+   // useHistory,
+} from "react-router-dom";
 
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -17,6 +22,7 @@ import Footer from "./components/Footer";
 
 function App() {
    const [userToken, setUserToken] = useState();
+   // const history = useHistory();
 
    const currentUser = (token) => {
       if (token) {
@@ -27,6 +33,7 @@ function App() {
          // Log out >> remove the cookie
          Cookies.remove("userToken");
          setUserToken(null);
+         // history.push("/");
       }
    };
 
