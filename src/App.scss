@@ -1,13 +1,16 @@
+//////// HEADER ////////
 header {
    height: 60px;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   img {
-      height: 40px;
-      margin-right: 50px;
+   :nth-child(1) {
+      img {
+         height: 40px;
+         margin-right: 50px;
+      }
    }
-   .search-bar {
+   :nth-child(2) {
       background-color: #f5f6f7;
       border-radius: 5px;
       height: 40px;
@@ -28,43 +31,52 @@ header {
          }
       }
    }
-   > button {
+   :nth-child(3),
+   :nth-child(4) {
       height: 35px;
       width: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-radius: 5px;
-      padding: 0 10px;
       font-size: 16px;
       font-weight: 300;
-      &:not(:last-child) {
-         border: 1px solid #21adb6;
-         color: #21adb6;
-         background: none;
-         margin: 0 10px;
-         &:hover {
-            cursor: pointer;
-            background-color: #21adb6;
-            color: #fff;
-         }
-      }
-      &:last-child {
-         border: 1px solid #21adb6;
-         color: #fff;
+      border: 1px solid #21adb6;
+      color: #21adb6;
+      margin: 0 10px;
+      &:hover {
          background-color: #21adb6;
-         margin-left: 50px;
-         &:hover {
-            cursor: pointer;
-            background: none;
-            color: #21adb6;
-         }
+         color: #fff;
+      }
+   }
+   :nth-child(5) {
+      height: 35px;
+      width: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 300;
+      border: 1px solid #21adb6;
+      color: #fff;
+      background-color: #21adb6;
+      margin-left: 50px;
+      &:hover {
+         background: none;
+         color: #21adb6;
       }
    }
 }
 
+//////// CONTAINERS ////////
 .container {
    width: 1280px;
    margin: 0 auto;
+   flex: 1 0 auto;
 }
 
+//////// HERO BANNER HOMEPAGE ////////
 .hero-banner {
    position: relative;
    .main-img {
@@ -80,7 +92,6 @@ header {
       width: 1000px;
    }
    > div {
-      //   position: relative;
       > div {
          display: flex;
          flex-direction: column;
@@ -120,6 +131,7 @@ header {
    }
 }
 
+//////// LIST OF OFFERS ////////
 .offer-list {
    display: flex;
    flex-wrap: wrap;
@@ -182,6 +194,7 @@ header {
    }
 }
 
+//////// OFFER PAGE ////////
 .offer-body {
    background-color: #ebedee;
    height: calc(100vh - 60px);
@@ -267,6 +280,63 @@ header {
    }
 }
 
+//////// LOGIN PAGE ////////
+.login-section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   box-sizing: border-box;
+   width: 300px;
+   margin: 50px auto;
+   * {
+      margin-bottom: 15px;
+   }
+   h1 {
+      font-weight: 500;
+      font-size: 30px;
+   }
+   form {
+      display: flex;
+      flex-direction: column;
+      // align-items: center;
+      > input {
+         border-bottom: 1px solid #eee;
+         width: 100%;
+         padding: 10px;
+      }
+      > div {
+         padding: 0 20px;
+         > input {
+            margin-right: 15px;
+            transform: scale(1.5);
+         }
+         > label {
+            font-weight: 300;
+            font-size: 18px;
+         }
+         > p {
+            font-size: 14px;
+            color: #999;
+            font-weight: 300;
+         }
+      }
+      > button {
+         font-size: 16px;
+         font-weight: 300;
+         color: #fff;
+         padding: 10px;
+         background-color: #21adb6;
+         border: none;
+         border-radius: 5px;
+      }
+   }
+   a {
+      font-size: 14px;
+      color: #21adb6;
+   }
+}
+
+//////// FOOTER ////////
 footer {
    padding: 50px 0;
    font-size: 12px;

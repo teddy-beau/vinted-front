@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/images/vinted-logo.png";
 
-const Header = () => {
+const Header = ({ currentUser, userToken }) => {
    return (
       <div className="container">
          <header>
@@ -11,9 +11,9 @@ const Header = () => {
             <div className="search-bar">
                <input type="search" placeholder="Rechercher des articles" />
             </div>
-            <button>S'inscrire</button>
-            <button>Se connecter</button>
-            <button>Vends tes articles</button>
+            <Link to="/signup">S'inscrire</Link>
+            <Link to="/login">Se connecter</Link>
+            <Link>Vends tes articles</Link>
          </header>
       </div>
    );
