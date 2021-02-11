@@ -3,12 +3,9 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
 const Login = ({ currentUser }) => {
-   //Form input
    const [inputEmail, setInputEmail] = useState("");
    const [inputPassword, setInputPassword] = useState("");
-   // Pour quoi faire ?
-   const history = useHistory();
-   // Data received from server
+   const history = useHistory(); // To redirect upon submission
    const [data, setData] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
 
@@ -22,15 +19,14 @@ const Login = ({ currentUser }) => {
                password: inputPassword,
             }
          );
-         console.log("response.data", response.data);
+         // console.log("response.data", response.data);
          setData(response.data);
          setIsLoading(false);
       };
       fetchData();
       if (!isLoading) {
-         console.log("data.token", data.token);
          const token = data.token;
-         console.log("token", token);
+         // console.log("token", token);
          currentUser(token);
          history.push("/");
       }
@@ -48,6 +44,7 @@ const Login = ({ currentUser }) => {
                   onChange={(event) => {
                      setInputEmail(event.target.value);
                   }}
+                  required
                />
                <input
                   type="password"
@@ -56,8 +53,11 @@ const Login = ({ currentUser }) => {
                   onChange={(event) => {
                      setInputPassword(event.target.value);
                   }}
+                  required
                />
-               <button type="submit">Se connecter</button>
+               <button className="blue-button-dark" type="submit">
+                  Se connecter
+               </button>
             </form>
             <Link to="/signup">Pas encore de compte ? Inscris-toi !</Link>
          </div>

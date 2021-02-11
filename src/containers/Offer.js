@@ -52,7 +52,7 @@ const Offer = () => {
                   />
                   <div>{data.owner.account.username}</div>
                </div>
-               <button>Acheter</button>
+               <button className="blue-button-dark">Acheter</button>
             </div>
          </div>
       </div>
