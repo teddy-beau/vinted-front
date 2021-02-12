@@ -29,7 +29,7 @@ const Home = ({ data, setData }) => {
          <div className="offer-list">
             {data.offers ? ( // Avoid looping on an empty array (error)
                data.offers.map((offer) => {
-                  return <OfferCard offer={offer} />;
+                  return <OfferCard offer={offer} key={offer._id} />;
                })
             ) : (
                <span>Aucun résultats ne correspond à la recherche</span>

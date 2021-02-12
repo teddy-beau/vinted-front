@@ -1,17 +1,30 @@
+//////// BODY ////////
+body {
+   font-family: "Roboto", sans-serif;
+   line-height: normal;
+   color: #000;
+}
+a {
+   text-decoration: none;
+   color: #000;
+}
+
 //////// HEADER ////////
 header {
    min-height: 60px;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   :nth-child(1) {
+   > :nth-child(1) {
       img {
          height: 40px;
          margin-right: 50px;
       }
    }
-   :nth-child(2) {
-      .search-bar {
+   > :nth-child(2) {
+      flex: 1;
+      margin-right: 50px;
+      > .search-bar {
          margin: 10px 0;
          background-color: #f5f6f7;
          border-radius: 5px;
@@ -22,7 +35,7 @@ header {
          margin-right: auto;
          display: flex;
          align-items: center;
-         input {
+         > input {
             background: none;
             border: none;
             width: 100%;
@@ -37,16 +50,34 @@ header {
             }
          }
       }
-      .filters {
-         border: 1px solid pink;
+      > .filters {
+         display: flex;
+         // justify-content: space-between;
+         align-items: center;
+         margin: 40px 0 15px 0;
+         > :nth-child(1),
+         > :nth-child(3) {
+            font-size: 12px;
+            font-weight: 300;
+            margin-right: 10px;
+         }
+         > :nth-child(2) {
+            position: relative;
+            margin-right: 30px;
+         }
+         > :nth-child(4) {
+            min-width: 200px;
+            flex: 1;
+            margin-right: 20px;
+         }
       }
    }
-   :nth-child(3),
-   :nth-child(4) {
-      width: 160px;
+   > :nth-child(3),
+   > :nth-child(4) {
+      width: 135px;
       margin: 0 10px;
    }
-   :nth-child(5) {
+   > :nth-child(5) {
       width: 160px;
       margin-left: 50px;
    }

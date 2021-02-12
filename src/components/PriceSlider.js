@@ -1,47 +1,31 @@
-import * as React from "react";
+import { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 
-const STEP = 5;
-const MIN = 0;
-const MAX = 100;
-
-const PriceSlider: React.FC<{ rtl: boolean }> = ({
-   rtl,
-   priceMin,
-   setPriceMin,
-   priceMax,
-   setPriceMax,
-}) => {
-   const [values, setValues] = React.useState([20, 50]);
+const PriceSlider = ({ setPriceMax, setPriceMin }) => {
+   console.log(setPriceMax);
+   const [values, setValues] = useState([50, 500]);
    return (
-      <div
-         style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
+      <Range
+         step={5}
+         min={0}
+         max={500}
+         values={values}
+         onChange={(values) => {
+            setValues(values);
+            setPriceMax(values[1]);
+            setPriceMin(values[0]);
+            console.log(values);
          }}
-      >
-         <Range
-            values={values}
-            step={STEP}
-            min={MIN}
-            max={MAX}
-            rtl={rtl}
-            onChange={(values) =>
-               setValues(() => {
-                  setPriceMin(values[0]);
-                  setPriceMax(values[1]);
-               })
-            }
-            renderTrack={({ props, children }) => (
+         renderTrack={({ props, children }) => {
+            // console.log(children);
+            return (
                <div
-                  onMouseDown={props.onMouseDown}
-                  onTouchStart={props.onTouchStart}
                   style={{
                      ...props.style,
-                     height: "40px",
-                     display: "flex",
+                     height: "6px",
+                     borderRadius: "2px",
                      width: "100%",
+                     backgroundColor: "#EEE",
                   }}
                >
                   <div
@@ -51,11 +35,11 @@ const PriceSlider: React.FC<{ rtl: boolean }> = ({
                         width: "100%",
                         borderRadius: "4px",
                         background: getTrackBackground({
-                           values,
-                           colors: ["#ccc", "#548BF4", "#ccc"],
-                           min: MIN,
-                           max: MAX,
-                           rtl,
+                           values: values,
+                           colors: ["#eee", "#1fa1aa", "#eee"],
+                           min: 0,
+                           max: 500,
+                           // rtl,
                         }),
                         alignSelf: "center",
                      }}
@@ -63,48 +47,43 @@ const PriceSlider: React.FC<{ rtl: boolean }> = ({
                      {children}
                   </div>
                </div>
-            )}
-            renderThumb={({ index, props, isDragged }) => (
+            );
+         }}
+         renderThumb={({ index, props }) => {
+            return (
                <div
                   {...props}
                   style={{
                      ...props.style,
-                     height: "25px",
-                     width: "25px",
-                     borderRadius: "4px",
-                     backgroundColor: "#FFF",
+                     height: "15px",
+                     width: "15px",
+                     borderRadius: "50%",
+                     backgroundColor: "#21adb6",
                      display: "flex",
                      justifyContent: "center",
                      alignItems: "center",
-                     boxShadow: "0px 2px 6px #AAA",
+                     border: "1px solid #FFF",
                   }}
                >
                   <div
                      style={{
                         position: "absolute",
-                        top: "-28px",
+                        top: "-25px",
                         color: "#fff",
-                        fontWeight: "bold",
-                        fontSize: "14px",
+                        fontWeight: "300",
+                        fontSize: "12px",
                         fontFamily: "Arial,Helvetica Neue,Helvetica,sans-serif",
                         padding: "4px",
                         borderRadius: "4px",
-                        backgroundColor: "#548BF4",
+                        backgroundColor: "#21adb6",
                      }}
                   >
-                     {values[index].toFixed(0)}
+                     {values[index]}&nbsp;€
                   </div>
-                  <div
-                     style={{
-                        height: "16px",
-                        width: "5px",
-                        backgroundColor: isDragged ? "#548BF4" : "#CCC",
-                     }}
-                  />
                </div>
-            )}
-         />
-      </div>
+            );
+         }}
+      />
    );
 };
 
