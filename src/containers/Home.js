@@ -27,9 +27,13 @@ const Home = ({ data, setData }) => {
    ) : (
       <div className="container">
          <div className="offer-list">
-            {data.offers.map((offer) => {
-               return <OfferCard offer={offer} />;
-            })}
+            {data.offers ? ( // Avoid looping on an empty array (error)
+               data.offers.map((offer) => {
+                  return <OfferCard offer={offer} />;
+               })
+            ) : (
+               <span>Aucun résultats ne correspond à la recherche</span>
+            )}
          </div>
       </div>
    );

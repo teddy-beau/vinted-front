@@ -2,7 +2,7 @@ import { Link, useHistory } from "react-router-dom";
 import SearchFilters from "./SearchFilters";
 import logo from "../assets/images/vinted-logo.png";
 
-const Header = ({ currentUser, userToken, data, setData }) => {
+const Header = ({ currentUser, userToken, setData }) => {
    const history = useHistory(); // Handle redirect upon click
 
    return (
@@ -11,7 +11,7 @@ const Header = ({ currentUser, userToken, data, setData }) => {
             <Link to="/">
                <img src={logo} alt="Logo Vinted" />
             </Link>
-            <SearchFilters data={data} setData={setData} />
+            <SearchFilters setData={setData} />
             {!userToken && (
                <Link className="white-button" to="/signup">
                   S'inscrire

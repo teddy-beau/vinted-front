@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const OfferCard = ({ offer }) => {
    return (
       <>
-         <Link to={`/offer/${offer._id}`}>
-            <div className="offer-card" key={offer._id}>
+         <Link to={`/offer/${offer._id}`} key={offer._id}>
+            <div className="offer-card">
                <div>
                   <img
                      src={offer.owner.account.avatar.secure_url}

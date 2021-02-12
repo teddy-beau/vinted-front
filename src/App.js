@@ -37,7 +37,6 @@ function App() {
          <Header
             userToken={userToken}
             currentUser={currentUser}
-            data={data}
             setData={setData}
          />
          <Switch>
