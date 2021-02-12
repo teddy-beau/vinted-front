@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const SearchFilters = () => {
-   const [data, setData] = useState([]);
-   const [isLoading, setIsLoading] = useState(true);
-
+const SearchFilters = ({ data, setData }) => {
    const [searchInput, setSearchInput] = useState("");
+
+   const [isLoading, setIsLoading] = useState(true);
 
    useEffect(() => {
       const fetchData = async () => {
@@ -20,8 +19,7 @@ const SearchFilters = () => {
          }
       };
       fetchData();
-      console.log(data);
-   }, [searchInput]); // Penser aux dépendances
+   }, [searchInput, setData]);
 
    return isLoading ? (
       <div>Loading...</div>

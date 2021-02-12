@@ -18,6 +18,8 @@ import Footer from "./components/Footer";
 function App() {
    const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
 
+   const [data, setData] = useState([]);
+
    const currentUser = (token) => {
       if (token) {
          // Log in >> create a cookie
@@ -32,7 +34,12 @@ function App() {
 
    return (
       <Router>
-         <Header userToken={userToken} currentUser={currentUser} />
+         <Header
+            userToken={userToken}
+            currentUser={currentUser}
+            data={data}
+            setData={setData}
+         />
          <Switch>
             <Route path="/offer/:_id">
                <Offer />
@@ -45,7 +52,7 @@ function App() {
             </Route>
             <Route path="/">
                <Hero />
-               <Home />
+               <Home data={data} setData={setData} />
             </Route>
          </Switch>
          <Footer />

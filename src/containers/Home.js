@@ -3,8 +3,8 @@ import axios from "axios";
 
 import OfferCard from "../components/OfferCard";
 
-const Home = () => {
-   const [data, setData] = useState([]);
+const Home = ({ data, setData }) => {
+   // const [data, setData] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
 
    useEffect(() => {
@@ -20,7 +20,7 @@ const Home = () => {
          }
       };
       fetchData();
-   }, []);
+   }, [setData]);
 
    return isLoading ? (
       <div>Loading...</div>
