@@ -1,10 +1,5 @@
 import "./App.scss";
-import {
-   BrowserRouter as Router,
-   Switch,
-   Route,
-   // useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -21,8 +16,7 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 
 function App() {
-   const [userToken, setUserToken] = useState();
-   // const history = useHistory();
+   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
 
    const currentUser = (token) => {
       if (token) {
@@ -33,7 +27,6 @@ function App() {
          // Log out >> remove the cookie
          Cookies.remove("userToken");
          setUserToken(null);
-         // history.push("/");
       }
    };
 

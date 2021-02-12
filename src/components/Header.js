@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/images/vinted-logo.png";
 
 const Header = ({ currentUser, userToken }) => {
+   const history = useHistory(); // Handle redirect upon click
+
    return (
       <div className="container">
          <header>
@@ -16,17 +18,21 @@ const Header = ({ currentUser, userToken }) => {
                   S'inscrire
                </Link>
             )}
-            {!userToken && (
+            {userToken ? (
+               <div
+                  className="red-button"
+                  onClick={() => {
+                     currentUser(null);
+                     history.push("/");
+                  }}
+               >
+                  Se deconnecter
+               </div>
+            ) : (
                <Link className="white-button" to="/login">
                   Se connecter
                </Link>
             )}
-            {userToken && (
-               <div className="red-button" onClick={() => currentUser(null)}>
-                  Se deconnecter
-               </div>
-            )}
-
             <Link
                className="blue-button"
                to={userToken ? "/offer/publish" : "/login"}

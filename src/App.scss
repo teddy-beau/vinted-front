@@ -25,9 +25,13 @@ header {
          border: none;
          width: 100%;
          font-size: 16px;
+         font-weight: 300;
          color: #999;
          &:focus {
             outline: none;
+         }
+         &::placeholder {
+            color: #d4d4d4;
          }
       }
    }
@@ -81,6 +85,9 @@ header {
    &:hover {
       background-color: #1fa1aa;
    }
+   &:focus {
+      outline: none;
+   }
 }
 .white-button {
    height: 35px;
@@ -96,6 +103,9 @@ header {
    &:hover {
       background-color: #21adb6;
       color: #fff;
+   }
+   &:focus {
+      outline: none;
    }
 }
 .red-button {
@@ -113,6 +123,9 @@ header {
    &:hover {
       background-color: #c2175b;
       color: #fff;
+   }
+   &:focus {
+      outline: none;
    }
 }
 
@@ -294,59 +307,65 @@ header {
    }
 }
 
-//////// LOGIN PAGE ////////
+//////// LOGIN & SIGNUP PAGE ////////
 .login-section {
    display: flex;
    flex-direction: column;
    align-items: center;
-   box-sizing: border-box;
    width: 300px;
-   margin: 50px auto;
-   * {
-      margin-bottom: 15px;
-   }
-   h1 {
+   margin: 80px auto;
+   > h1 {
       font-weight: 500;
       font-size: 30px;
+      margin-bottom: 20px;
    }
-   form {
+   > form {
       display: flex;
       flex-direction: column;
-      // align-items: center;
+      width: 100%;
       > input {
-         border-bottom: 1px solid #eee;
          width: 100%;
-         padding: 10px;
+         padding: 10px 10px 10px 5px;
+         margin-bottom: 15px;
+         border-bottom: 1px solid rgb(255, 216, 216);
+         font-weight: 300;
+         &:focus {
+            outline: none;
+         }
+         &::placeholder {
+            color: #d4d4d4;
+         }
       }
       > div {
+         margin-top: 30px;
          padding: 0 20px;
          > input {
             margin-right: 15px;
             transform: scale(1.5);
          }
          > label {
-            font-weight: 300;
             font-size: 18px;
+            font-weight: 300;
+            color: #999;
          }
          > p {
-            font-size: 14px;
-            color: #999;
+            font-size: 12px;
             font-weight: 300;
+            color: #999;
+            line-height: 130%;
+            margin: 10px 0;
          }
       }
       > button {
-         font-size: 16px;
-         font-weight: 300;
-         color: #fff;
-         padding: 10px;
-         background-color: #21adb6;
-         border: none;
-         border-radius: 5px;
+         margin-top: 30px;
+         width: 100%;
       }
    }
    a {
-      font-size: 14px;
+      margin-top: 20px;
+      font-size: 13px;
       color: #21adb6;
+      font-weight: 300;
    }
 }
 

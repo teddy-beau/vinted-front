@@ -78,7 +78,6 @@ const SignUp = ({ currentUser }) => {
                      confirme avoir au moins 18 ans.
                   </p>
                </div>
-
                <button className="blue-button-dark" type="submit">
                   S'inscrire
                </button>
