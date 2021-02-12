@@ -1,4 +1,5 @@
 import { Link, useHistory } from "react-router-dom";
+import SearchFilters from "./SearchFilters";
 import logo from "../assets/images/vinted-logo.png";
 
 const Header = ({ currentUser, userToken }) => {
@@ -10,9 +11,7 @@ const Header = ({ currentUser, userToken }) => {
             <Link to="/">
                <img src={logo} alt="Logo Vinted" />
             </Link>
-            <div className="search-bar">
-               <input type="search" placeholder="Rechercher des articles" />
-            </div>
+            <SearchFilters />
             {!userToken && (
                <Link className="white-button" to="/signup">
                   S'inscrire

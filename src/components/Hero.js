@@ -13,7 +13,7 @@ const Hero = () => {
          <div className="container">
             <div>
                <h1>Prêts à faire du tri dans vos placards ?</h1>
-               <div className="blue-button">Commencer à vendre</div>
+               <div className="blue-button-dark">Commencer à vendre</div>
             </div>
          </div>
       </div>
