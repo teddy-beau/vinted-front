@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import SortingSwitch from "./SortingSwitch";
-import PriceSlider from "./PriceSlider";
+import PriceSwitch from "./SearchFilters/PriceSwitch";
+import PriceSlider from "./SearchFilters/PriceSlider";
+// import ResultsPerPage from "./SearchFilters/ResultsPerPage";
 
-const SearchFilters = ({ setData }) => {
+const SearchFilters = ({ setData, limit, page }) => {
    const [searchInput, setSearchInput] = useState("");
    const [priceMin, setPriceMin] = useState(0);
    const [priceMax, setPriceMax] = useState(500);
    const [sort, setSort] = useState("price-asc");
 
-   // const [skip, setSkip] = useState(0);
-   // const [limit, setLimit] = useState(null);
+   // const [limit, setLimit] = useState(25);
 
    // API REQUEST
    const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +18,7 @@ const SearchFilters = ({ setData }) => {
       const fetchData = async () => {
          try {
             const response = await axios.get(
-               `https://vinted-clone.herokuapp.com/offers?title=${searchInput}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
+               `https://vinted-clone.herokuapp.com/offers?title=${searchInput}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}&page=${page}&limit=${limit}`
             );
             setData(response.data);
             setIsLoading(false);
@@ -27,7 +27,7 @@ const SearchFilters = ({ setData }) => {
          }
       };
       fetchData();
-   }, [searchInput, priceMin, priceMax, sort, setData]);
+   }, [searchInput, priceMin, priceMax, sort, setData, limit, page]);
 
    return isLoading ? (
       <div>Loading...</div>
@@ -42,9 +42,9 @@ const SearchFilters = ({ setData }) => {
             />
          </div>
          <div className="filters">
-            <span>Trier&nbsp;par&nbsp;prix :</span>
+            <span>Trier&nbsp;par prix&nbsp;:</span>
             <div>
-               <SortingSwitch sort={sort} setSort={setSort} />
+               <PriceSwitch sort={sort} setSort={setSort} />
                {sort === "price-asc" ? (
                   <div
                      style={{
@@ -73,13 +73,15 @@ const SearchFilters = ({ setData }) => {
                   </div>
                )}
             </div>
-            <span>Prix&nbsp;entre&nbsp;:</span>
+            <span>Prix entre&nbsp;:</span>
             <div>
                <PriceSlider
                   setPriceMin={setPriceMin}
                   setPriceMax={setPriceMax}
                />
             </div>
+            {/* <span>Résultats par&nbsp;page&nbsp;:</span> */}
+            {/* <ResultsPerPage limit={limit} setLimit={setLimit} /> */}
          </div>
       </div>
    );

@@ -1,7 +1,7 @@
 import { Switch, withStyles } from "@material-ui/core";
 import { useState } from "react";
 
-const SortingSwitch = ({ sort, setSort }) => {
+const PriceSwitch = ({ sort, setSort }) => {
    const [checked, setChecked] = useState(false);
 
    const toggleSort = (event) => {
@@ -30,4 +30,4 @@ const SortingSwitch = ({ sort, setSort }) => {
    return <PriceSwitch checked={checked} onChange={toggleSort}></PriceSwitch>;
 };
 
-export default SortingSwitch;
+export default PriceSwitch;

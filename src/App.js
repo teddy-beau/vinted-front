@@ -19,6 +19,8 @@ function App() {
    const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
 
    const [data, setData] = useState([]);
+   const [page, setPage] = useState(1);
+   const [limit, setLimit] = useState(25);
 
    const currentUser = (token) => {
       if (token) {
@@ -38,6 +40,8 @@ function App() {
             userToken={userToken}
             currentUser={currentUser}
             setData={setData}
+            limit={limit}
+            page={page}
          />
          <Switch>
             <Route path="/offer/:_id">
@@ -51,7 +55,14 @@ function App() {
             </Route>
             <Route path="/">
                <Hero />
-               <Home data={data} setData={setData} />
+               <Home
+                  data={data}
+                  setData={setData}
+                  limit={limit}
+                  setLimit={setLimit}
+                  page={page}
+                  setPage={setPage}
+               />
             </Route>
          </Switch>
          <Footer />

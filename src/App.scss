@@ -56,7 +56,9 @@ header {
          align-items: center;
          margin: 40px 0 15px 0;
          > :nth-child(1),
-         > :nth-child(3) {
+         > :nth-child(3),
+         // > :nth-child(5),
+         {
             font-size: 12px;
             font-weight: 300;
             margin-right: 10px;
@@ -87,6 +89,16 @@ header {
 .container {
    width: 1280px;
    margin: 0 auto;
+}
+.modal-container {
+   width: 100vw;
+   height: 100vh;
+   margin: 0;
+   background-color: rgba(17, 17, 17, 0.8);
+   display: none;
+   z-index: 150;
+   position: absolute;
+   top: 0;
 }
 
 //////// BUTTON STYLES ////////
@@ -272,6 +284,34 @@ header {
       }
    }
 }
+.page-nav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   > * {
+      margin: 20px 30px;
+      font-size: 14px;
+      color: #21adb6;
+   }
+   > span {
+      &:hover {
+         text-decoration: underline;
+         cursor: pointer;
+         color: #999;
+      }
+   }
+   > div {
+      > span {
+         margin-left: 15px;
+         &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            color: #999;
+         }
+      }
+   }
+}
 
 //////// OFFER PAGE ////////
 .offer-body {
@@ -354,13 +394,24 @@ header {
 .login-section {
    display: flex;
    flex-direction: column;
-   align-items: center;
    width: 300px;
    margin: 80px auto;
+   background-color: #fff;
+   padding: 30px;
+   border-radius: 5px;
+   z-index: 200;
+   > div {
+      // Closing modal
+      position: relative;
+      align-self: flex-end;
+      top: -10px;
+      cursor: pointer;
+   }
    > h1 {
       font-weight: 500;
       font-size: 30px;
       margin-bottom: 20px;
+      align-self: center;
    }
    > form {
       display: flex;
@@ -372,6 +423,7 @@ header {
          margin-bottom: 15px;
          border-bottom: 1px solid rgb(255, 216, 216);
          font-weight: 300;
+         box-sizing: border-box;
          &:focus {
             outline: none;
          }
@@ -409,6 +461,7 @@ header {
       font-size: 13px;
       color: #21adb6;
       font-weight: 300;
+      align-self: center;
    }
 }
 
