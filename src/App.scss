@@ -219,6 +219,9 @@ header {
    width: 235px;
    padding: 7px;
    margin-bottom: 25px;
+   :hover {
+      opacity: 0.9;
+   }
    > :nth-child(1) {
       display: flex;
       align-items: center;

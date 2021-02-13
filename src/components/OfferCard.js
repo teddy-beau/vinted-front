@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import noAvatar from "../assets/images/no-avatar.png";
 
 const OfferCard = ({ offer }) => {
    return (
@@ -7,7 +8,11 @@ const OfferCard = ({ offer }) => {
             <div className="offer-card">
                <div>
                   <img
-                     src={offer.owner.account.avatar.secure_url}
+                     src={
+                        offer.owner.account.avatar
+                           ? offer.owner.account.avatar.secure_url
+                           : noAvatar
+                     }
                      alt={`Avatar de ${offer.owner.account.username}`}
                   />
                   <div>{offer.owner.account.username}</div>

@@ -53,6 +53,7 @@ const SearchFilters = ({ setData }) => {
                         position: "absolute",
                         top: "11px",
                         left: "14.5px",
+                        cursor: "pointer",
                      }}
                   >
                      ↑
@@ -65,6 +66,7 @@ const SearchFilters = ({ setData }) => {
                         position: "absolute",
                         top: "11px",
                         left: "35px",
+                        cursor: "pointer",
                      }}
                   >
                      ↓
