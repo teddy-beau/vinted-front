@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 // Import containers first
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
+import Publish from "./containers/Publish";
 import SignUp from "./containers/SignUp";
 import Login from "./containers/Login";
 
@@ -55,6 +56,9 @@ function App() {
             <Route path="/offer/:_id">
                <Offer />
             </Route>
+            <Route path="/offer/publish">
+               <Publish />
+            </Route>
             <Route path="/signup">
                <SignUp currentUser={currentUser} />
             </Route>
@@ -62,7 +66,7 @@ function App() {
                <Login currentUser={currentUser} />
             </Route>
             <Route path="/">
-               <Hero />
+               <Hero userToken={userToken} />
                <Home
                   data={data}
                   setData={setData}

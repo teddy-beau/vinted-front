@@ -215,11 +215,11 @@ header {
          position: absolute;
          z-index: 50;
          top: calc((500px - 220px) / 2 - 30px);
-         h1 {
+         :first-child {
             font-size: 34px;
             font-weight: 500;
          }
-         div {
+         :last-child {
             padding: 0 20px;
          }
       }
@@ -323,7 +323,7 @@ header {
 //////// OFFER PAGE ////////
 .offer-body {
    background-color: #ebedee;
-   height: calc(100vh - 170px);
+   height: calc(100vh - 175px);
 }
 .offer-details {
    display: flex;

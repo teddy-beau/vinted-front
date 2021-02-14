@@ -38,7 +38,7 @@ const Offer = () => {
                <ul>
                   {data.product_details.map((elem, index) => {
                      return (
-                        <li>
+                        <li key={index}>
                            <span>{Object.keys(elem)}</span>
                            <span>{elem[Object.keys(elem)]}</span>
                         </li>

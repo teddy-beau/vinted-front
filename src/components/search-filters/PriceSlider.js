@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 
 const PriceSlider = ({ setPriceMax, setPriceMin }) => {
-   console.log(setPriceMax);
-   const [values, setValues] = useState([50, 500]);
+   const [values, setValues] = useState([0, 500]);
    return (
       <>
          <span>Prix entre&nbsp;:</span>
@@ -17,7 +16,7 @@ const PriceSlider = ({ setPriceMax, setPriceMin }) => {
                   setValues(values);
                   setPriceMax(values[1]);
                   setPriceMin(values[0]);
-                  console.log(values);
+                  // console.log(values);
                }}
                renderTrack={({ props, children }) => {
                   // console.log(children);
