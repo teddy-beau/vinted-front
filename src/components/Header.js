@@ -8,7 +8,8 @@ import SignUpModal from "./modals/SignUpModal";
 const Header = ({ currentUser, userToken, setData, limit, page }) => {
    const history = useHistory(); // Handle redirect upon click
 
-   const [hideModal, setHideModal] = useState(true);
+   const [hideLoginModal, setHideLoginModal] = useState(true);
+   const [hideSignUpModal, setHideSignUpModal] = useState(true);
 
    return (
       <>
@@ -19,9 +20,14 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
                </Link>
                <SearchFilters setData={setData} limit={limit} page={page} />
                {!userToken && (
-                  <Link className="white-button" to="/signup">
+                  <div
+                     className="white-button"
+                     onClick={() => {
+                        setHideSignUpModal(false);
+                     }}
+                  >
                      S'inscrire
-                  </Link>
+                  </div>
                )}
                {userToken ? (
                   <div
@@ -34,15 +40,14 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
                      Se deconnecter
                   </div>
                ) : (
-                  <Link
+                  <div
                      className="white-button"
-                     // to="/login"
                      onClick={() => {
-                        setHideModal(false);
+                        setHideLoginModal(false);
                      }}
                   >
                      Se connecter
-                  </Link>
+                  </div>
                )}
                <Link
                   className="blue-button"
@@ -53,14 +58,14 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
             </header>
          </div>
          <LoginModal
-            hideModal={hideModal}
+            hideLoginModal={hideLoginModal}
             currentUser={currentUser}
-            setHideModal={setHideModal}
+            setHideLoginModal={setHideLoginModal}
          />
          <SignUpModal
-            hideModal={hideModal}
+            hideSignUpModal={hideSignUpModal}
             currentUser={currentUser}
-            setHideModal={setHideModal}
+            setHideSignUpModal={setHideSignUpModal}
          />
       </>
    );

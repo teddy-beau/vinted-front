@@ -9,6 +9,12 @@ a {
    color: #000;
 }
 
+.loading-message {
+   padding: 10px 0;
+   margin: 0 auto;
+   color: #999;
+}
+
 //////// HEADER ////////
 header {
    min-height: 60px;
@@ -35,6 +41,10 @@ header {
          margin-right: auto;
          display: flex;
          align-items: center;
+         > svg {
+            color: #d4d4d4;
+            margin-right: 10px;
+         }
          > input {
             background: none;
             border: none;
@@ -52,7 +62,6 @@ header {
       }
       > .filters {
          display: flex;
-         // justify-content: space-between;
          align-items: center;
          margin: 40px 0 15px 0;
          > :nth-child(1),
@@ -316,7 +325,7 @@ header {
 //////// OFFER PAGE ////////
 .offer-body {
    background-color: #ebedee;
-   height: calc(100vh - 60px);
+   height: calc(100vh - 170px);
 }
 .offer-details {
    display: flex;
@@ -331,7 +340,7 @@ header {
    }
    > :last-child {
       box-sizing: border-box;
-      max-width: 400px;
+      width: 400px;
       background-color: #fff;
       padding: 40px;
       display: flex;
@@ -395,17 +404,25 @@ header {
    display: flex;
    flex-direction: column;
    width: 300px;
-   margin: 80px auto;
+   margin: 100px auto 0 auto;
    background-color: #fff;
    padding: 30px;
    border-radius: 5px;
    z-index: 200;
    > div {
-      // Closing modal
+      // X to close modal
       position: relative;
       align-self: flex-end;
-      top: -10px;
+      top: -15px;
+      right: -15px;
       cursor: pointer;
+      > * {
+         font-size: 22px;
+         color: #d4d4d4;
+         &:hover {
+            color: #c2175b;
+         }
+      }
    }
    > h1 {
       font-weight: 500;
@@ -457,6 +474,7 @@ header {
       }
    }
    a {
+      // Text after the button
       margin-top: 20px;
       font-size: 13px;
       color: #21adb6;

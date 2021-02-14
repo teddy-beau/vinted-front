@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import PriceSwitch from "./SearchFilters/PriceSwitch";
 import PriceSlider from "./SearchFilters/PriceSlider";
 // import ResultsPerPage from "./SearchFilters/ResultsPerPage";
 
 const SearchFilters = ({ setData, limit, page }) => {
+   const location = useLocation();
+
    const [searchInput, setSearchInput] = useState("");
    const [priceMin, setPriceMin] = useState(0);
    const [priceMax, setPriceMax] = useState(500);
@@ -30,10 +35,11 @@ const SearchFilters = ({ setData, limit, page }) => {
    }, [searchInput, priceMin, priceMax, sort, setData, limit, page]);
 
    return isLoading ? (
-      <div>Loading...</div>
+      <div className="container loading-message">En cours de chargement...</div>
    ) : (
       <div>
          <div className="search-bar">
+            <FontAwesomeIcon icon="search" />
             <input
                type="search"
                placeholder="Rechercher des articles"
@@ -41,48 +47,17 @@ const SearchFilters = ({ setData, limit, page }) => {
                onChange={(event) => setSearchInput(event.target.value)}
             />
          </div>
-         <div className="filters">
-            <span>Trier&nbsp;par prix&nbsp;:</span>
-            <div>
+         {/* Filters hidden when not on path "/" */}
+         {location.pathname === "/" && (
+            <div className="filters">
                <PriceSwitch sort={sort} setSort={setSort} />
-               {sort === "price-asc" ? (
-                  <div
-                     style={{
-                        fontSize: "14px",
-                        color: "#fff",
-                        position: "absolute",
-                        top: "11px",
-                        left: "14.5px",
-                        cursor: "pointer",
-                     }}
-                  >
-                     ↑
-                  </div>
-               ) : (
-                  <div
-                     style={{
-                        fontSize: "14px",
-                        color: "#fff",
-                        position: "absolute",
-                        top: "11px",
-                        left: "35px",
-                        cursor: "pointer",
-                     }}
-                  >
-                     ↓
-                  </div>
-               )}
-            </div>
-            <span>Prix entre&nbsp;:</span>
-            <div>
+
                <PriceSlider
                   setPriceMin={setPriceMin}
                   setPriceMax={setPriceMax}
                />
             </div>
-            {/* <span>Résultats par&nbsp;page&nbsp;:</span> */}
-            {/* <ResultsPerPage limit={limit} setLimit={setLimit} /> */}
-         </div>
+         )}
       </div>
    );
 };

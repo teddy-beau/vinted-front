@@ -4,7 +4,6 @@ import axios from "axios";
 import OfferCard from "../components/OfferCard";
 
 const Home = ({ data, setData, limit, setLimit, page, setPage }) => {
-   // const [data, setData] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
 
    useEffect(() => {
@@ -23,19 +22,23 @@ const Home = ({ data, setData, limit, setLimit, page, setPage }) => {
    }, [setData]);
 
    return isLoading ? (
-      <div>Loading...</div>
+      <div className="container loading-message">En cours de chargement...</div>
    ) : (
       <div className="container">
+         {/* Cards of the offers */}
          <div className="offer-list">
             {data.offers ? ( // Avoid looping on an empty array (error)
                data.offers.map((offer) => {
                   return <OfferCard offer={offer} key={offer._id} />;
                })
             ) : (
-               <span>Aucun résultats ne correspond à la recherche</span>
+               <div className="loading-message">
+                  Aucun résultat pour votre recherche.
+               </div>
             )}
          </div>
 
+         {/* Nav at the bottom of the page */}
          <div className="page-nav">
             {page > 1 && (
                <span

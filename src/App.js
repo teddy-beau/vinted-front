@@ -1,6 +1,5 @@
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import { useState } from "react";
 import Cookies from "js-cookie";
 
@@ -15,12 +14,21 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 
-function App() {
-   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+// Fontawesome
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+   faCaretUp,
+   faCaretDown,
+   faTimesCircle,
+   faSearch,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faCaretUp, faCaretDown, faTimesCircle, faSearch);
 
-   const [data, setData] = useState([]);
-   const [page, setPage] = useState(1);
-   const [limit, setLimit] = useState(25);
+function App() {
+   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null); // For auth
+   const [data, setData] = useState([]); // From API request
+   const [page, setPage] = useState(1); // For page nav
+   const [limit, setLimit] = useState(25); // For page nav
 
    const currentUser = (token) => {
       if (token) {

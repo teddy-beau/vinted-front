@@ -1,9 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SignUpModal = ({ hideModal, setHideModal, currentUser }) => {
+const SignUpModal = ({ hideSignUpModal, setHideSignUpModal, currentUser }) => {
+   const [inputUsername, setInputUsername] = useState("");
    const [inputEmail, setInputEmail] = useState("");
+   const [inputPhone, setInputPhone] = useState("");
    const [inputPassword, setInputPassword] = useState("");
    const history = useHistory(); // To redirect upon submission
 
@@ -11,13 +14,15 @@ const SignUpModal = ({ hideModal, setHideModal, currentUser }) => {
       event.preventDefault();
       try {
          const response = await axios.post(
-            "https://vinted-clone.herokuapp.com/user/login",
+            "https://vinted-clone.herokuapp.com/user/signup",
             {
+               username: inputUsername,
                email: inputEmail,
+               phone: inputPhone,
                password: inputPassword,
             }
          );
-         // console.log("response: ", response);
+         console.log("response: ", response);
          currentUser(response.data.token);
          history.push("/");
       } catch (error) {
@@ -28,18 +33,27 @@ const SignUpModal = ({ hideModal, setHideModal, currentUser }) => {
    return (
       <div
          className="modal-container"
-         style={hideModal ? { display: "none" } : { display: "block" }}
+         style={hideSignUpModal ? { display: "none" } : { display: "block" }}
       >
          <div className="login-section">
             <div
                onClick={() => {
-                  setHideModal(true);
+                  setHideSignUpModal(true);
                }}
             >
-               X
+               <FontAwesomeIcon icon="times-circle" />
             </div>
-            <h1>Se connecter</h1>
+            <h1>S'inscrire</h1>
             <form onSubmit={handleSubmit}>
+               <input
+                  type="text"
+                  placeholder="Nom d'utilisateur"
+                  value={inputUsername}
+                  onChange={(event) => {
+                     setInputUsername(event.target.value);
+                  }}
+                  required
+               />
                <input
                   type="email"
                   placeholder="Adresse email"
@@ -50,6 +64,14 @@ const SignUpModal = ({ hideModal, setHideModal, currentUser }) => {
                   required
                />
                <input
+                  type="tel"
+                  placeholder="Téléphone"
+                  value={inputPhone}
+                  onChange={(event) => {
+                     setInputPhone(event.target.value);
+                  }}
+               />
+               <input
                   type="password"
                   placeholder="Mot de passe"
                   value={inputPassword}
@@ -58,11 +80,24 @@ const SignUpModal = ({ hideModal, setHideModal, currentUser }) => {
                   }}
                   required
                />
-               <button className="blue-button-dark" type="submit">
-                  Se connecter
+               <div>
+                  <input type="checkbox" name="tandc" id="tandc" />
+                  <label htmlFor="tandc">S'inscrire à notre newsletter</label>
+                  <p>
+                     En m'inscrivant je confirme avoir lu et accepté les Termes
+                     et Conditions et Politique de Confidentialité de Vinted. Je
+                     confirme avoir au moins 18 ans.
+                  </p>
+               </div>
+               <button
+                  className="blue-button-dark"
+                  type="submit"
+                  onClick={() => setHideSignUpModal(true)}
+               >
+                  S'inscrire
                </button>
             </form>
-            <Link to="/signup">Pas encore de compte ? Inscris-toi !</Link>
+            <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
          </div>
       </div>
    );

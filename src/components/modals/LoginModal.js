@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const LoginModal = ({ hideModal, setHideModal, currentUser }) => {
+const LoginModal = ({ hideLoginModal, setHideLoginModal, currentUser }) => {
    const [inputEmail, setInputEmail] = useState("");
    const [inputPassword, setInputPassword] = useState("");
    const history = useHistory(); // To redirect upon submission
@@ -28,15 +29,15 @@ const LoginModal = ({ hideModal, setHideModal, currentUser }) => {
    return (
       <div
          className="modal-container"
-         style={hideModal ? { display: "none" } : { display: "block" }}
+         style={hideLoginModal ? { display: "none" } : { display: "block" }}
       >
          <div className="login-section">
             <div
                onClick={() => {
-                  setHideModal(true);
+                  setHideLoginModal(true);
                }}
             >
-               X
+               <FontAwesomeIcon icon="times-circle" />
             </div>
             <h1>Se connecter</h1>
             <form onSubmit={handleSubmit}>
@@ -58,7 +59,11 @@ const LoginModal = ({ hideModal, setHideModal, currentUser }) => {
                   }}
                   required
                />
-               <button className="blue-button-dark" type="submit">
+               <button
+                  className="blue-button-dark"
+                  type="submit"
+                  onClick={() => setHideLoginModal(true)}
+               >
                   Se connecter
                </button>
             </form>

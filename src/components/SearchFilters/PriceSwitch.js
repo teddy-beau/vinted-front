@@ -1,5 +1,6 @@
 import { Switch, withStyles } from "@material-ui/core";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PriceSwitch = ({ sort, setSort }) => {
    const [checked, setChecked] = useState(false);
@@ -27,7 +28,16 @@ const PriceSwitch = ({ sort, setSort }) => {
       track: { backgroundColor: "#10979e" },
    })(Switch);
 
-   return <PriceSwitch checked={checked} onChange={toggleSort}></PriceSwitch>;
+   return (
+      <>
+         <span>Trier&nbsp;par prix&nbsp;:</span>
+         <div>
+            <FontAwesomeIcon icon="caret-up" />
+            <PriceSwitch checked={checked} onChange={toggleSort}></PriceSwitch>
+            <FontAwesomeIcon icon="caret-down" />
+         </div>
+      </>
+   );
 };
 
 export default PriceSwitch;

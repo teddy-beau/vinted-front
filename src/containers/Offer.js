@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import noAvatar from "../assets/images/no-avatar.png";
+
 const Offer = () => {
    const { _id } = useParams();
 
@@ -24,7 +26,7 @@ const Offer = () => {
    }, [_id]);
 
    return isLoading ? (
-      <div>Loading...</div>
+      <div className="container loading-message">En cours de chargement...</div>
    ) : (
       <div className="offer-body">
          <div className="container offer-details">
@@ -47,7 +49,11 @@ const Offer = () => {
                <div>{data.product_description}</div>
                <div>
                   <img
-                     src={data.owner.account.avatar.secure_url}
+                     src={
+                        data.owner.account.avatar
+                           ? data.owner.account.avatar.secure_url
+                           : noAvatar
+                     }
                      alt={`Avatar de ${data.owner.account.username}`}
                   />
                   <div>{data.owner.account.username}</div>
