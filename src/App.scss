@@ -65,9 +65,7 @@ header {
          align-items: center;
          margin: 40px 0 15px 0;
          > :nth-child(1),
-         > :nth-child(3),
-         // > :nth-child(5),
-         {
+         > :nth-child(3) {
             font-size: 12px;
             font-weight: 300;
             margin-right: 10px;

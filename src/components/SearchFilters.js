@@ -3,9 +3,8 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import PriceSwitch from "./SearchFilters/PriceSwitch";
-import PriceSlider from "./SearchFilters/PriceSlider";
-// import ResultsPerPage from "./SearchFilters/ResultsPerPage";
+import PriceSwitch from "./search-filters/PriceSwitch";
+import PriceSlider from "./search-filters/PriceSlider";
 
 const SearchFilters = ({ setData, limit, page }) => {
    const location = useLocation();
@@ -14,8 +13,6 @@ const SearchFilters = ({ setData, limit, page }) => {
    const [priceMin, setPriceMin] = useState(0);
    const [priceMax, setPriceMax] = useState(500);
    const [sort, setSort] = useState("price-asc");
-
-   // const [limit, setLimit] = useState(25);
 
    // API REQUEST
    const [isLoading, setIsLoading] = useState(true);
