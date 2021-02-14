@@ -323,14 +323,20 @@ header {
 //////// OFFER PAGE ////////
 .offer-body {
    background-color: #ebedee;
-   height: calc(100vh - 175px);
+   padding: 80px 0;
+   // height: calc(100vh - 175px);
 }
 .offer-details {
    display: flex;
    justify-content: space-around;
    align-items: center;
-   padding: 30px;
    > :first-child {
+      height: 600px;
+      width: 450px;
+      .react-multi-carousel-item {
+         display: flex;
+         justify-content: center;
+      }
       img {
          max-height: 600px;
          max-width: 450px;

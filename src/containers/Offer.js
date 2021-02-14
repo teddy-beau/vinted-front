@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import OfferPicturesCarousel from "../components/OfferPicturesCarousel";
 import noAvatar from "../assets/images/no-avatar.png";
 
 const Offer = () => {
@@ -30,9 +31,16 @@ const Offer = () => {
    ) : (
       <div className="offer-body">
          <div className="container offer-details">
-            <div>
-               <img src={data.product_pictures[0].secure_url} alt="Product" />
-            </div>
+            {data.product_pictures.length > 1 ? (
+               <OfferPicturesCarousel data={data} />
+            ) : (
+               <div>
+                  <img
+                     src={data.product_pictures[0].secure_url}
+                     alt={`Offer ${data.product_pictures[0].public_name}`}
+                  />
+               </div>
+            )}
             <div>
                <div>{data.product_price.toFixed(2).replace(".", ",")} €</div>
                <ul>
