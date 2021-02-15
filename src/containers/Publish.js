@@ -15,9 +15,6 @@ const Publish = ({ userToken }) => {
    const [offerCity, setOfferCity] = useState("");
    const [offerPictures, setOfferPictures] = useState();
 
-   const [data, setData] = useState([]); // From API request
-   // const [isLoading, setIsLoading] = useState(true);
-
    const handleSubmit = async (event) => {
       event.preventDefault();
 
@@ -57,10 +54,8 @@ const Publish = ({ userToken }) => {
             }
          );
          console.log("response: ", response.data);
-         setData(response.data);
-         // currentUser(response.data.token);
-         // setIsLoading(false);
-         history.push(`/offer/${data._id}`);
+         console.log("offerPictures", offerPictures);
+         history.push(`/offer/${response.data._id}`);
       } catch (error) {
          console.log(error);
       }
@@ -151,40 +146,12 @@ const Publish = ({ userToken }) => {
                   name="pictures"
                   id="pictures"
                   onChange={(event) => {
-                     // setOfferPictures(event.target.files);
-                     setOfferPictures(event.target.files[0]);
+                     setOfferPictures(event.target.files);
+                     // setOfferPictures(event.target.files[0]);
                   }}
                />
                <button type="submit">Publier l'offre</button>
             </form>
-            {/* {!isLoading && (
-               <div>
-                  <span>{data.title}</span> */}
-            {/* {data.product_pictures.map((pic) => {
-                     return (
-                        <img
-                           key={data.product_pictures[pic].public_id}
-                           src={data.product_pictures[pic].secure_url}
-                           alt={data.title}
-                           style={{
-                              height: "200px",
-                              width: "200px",
-                              objectFit: "cover",
-                           }}
-                        />
-                     );
-                  })} */}
-            {/* <img
-                     src={data.product_pictures[0].secure_url}
-                     alt={data.title}
-                     style={{
-                        height: "200px",
-                        width: "200px",
-                        objectFit: "cover",
-                     }}
-                  />
-               </div>
-            )} */}
          </section>
       </div>
    );
