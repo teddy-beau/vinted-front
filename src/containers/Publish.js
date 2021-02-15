@@ -16,22 +16,22 @@ const Publish = ({ userToken }) => {
    const [offerPictures, setOfferPictures] = useState();
 
    const [data, setData] = useState([]); // From API request
-   const [isLoading, setIsLoading] = useState(true);
+   // const [isLoading, setIsLoading] = useState(true);
 
    const handleSubmit = async (event) => {
       event.preventDefault();
 
-      const fileKeys = Object.keys(offerPictures);
-      console.log("fileKeys", fileKeys);
+      // const fileKeys = Object.keys(offerPictures);
+      // console.log("fileKeys", fileKeys);
 
-      const newOfferPictures = [];
-      fileKeys.forEach((fileKey) => {
-         console.log("fileKey", fileKey);
-         newOfferPictures.push(offerPictures[fileKey]);
-      });
-      console.log("newOfferPictures", newOfferPictures);
-      setOfferPictures(newOfferPictures);
-      console.log("finalArr", offerPictures);
+      // const newOfferPictures = [];
+      // fileKeys.forEach((fileKey) => {
+      //    console.log("fileKey", fileKey);
+      //    newOfferPictures.push(offerPictures[fileKey]);
+      // });
+      // console.log("newOfferPictures", newOfferPictures);
+      // setOfferPictures(newOfferPictures);
+      // console.log("finalArr", offerPictures);
 
       // Need a FormData type object to send files to server
       const formData = new FormData();
@@ -56,10 +56,10 @@ const Publish = ({ userToken }) => {
                },
             }
          );
-         console.log("response: ", response);
+         console.log("response: ", response.data);
          setData(response.data);
          // currentUser(response.data.token);
-         setIsLoading(false);
+         // setIsLoading(false);
          history.push(`/offer/${data._id}`);
       } catch (error) {
          console.log(error);
@@ -151,16 +151,16 @@ const Publish = ({ userToken }) => {
                   name="pictures"
                   id="pictures"
                   onChange={(event) => {
-                     setOfferPictures(event.target.files);
-                     // setOfferPictures(event.target.files[0]);
+                     // setOfferPictures(event.target.files);
+                     setOfferPictures(event.target.files[0]);
                   }}
                />
                <button type="submit">Publier l'offre</button>
             </form>
-            {!isLoading && (
+            {/* {!isLoading && (
                <div>
-                  <span>{data.title}</span>
-                  {data.product_pictures.map((pic) => {
+                  <span>{data.title}</span> */}
+            {/* {data.product_pictures.map((pic) => {
                      return (
                         <img
                            key={data.product_pictures[pic].public_id}
@@ -173,9 +173,18 @@ const Publish = ({ userToken }) => {
                            }}
                         />
                      );
-                  })}
+                  })} */}
+            {/* <img
+                     src={data.product_pictures[0].secure_url}
+                     alt={data.title}
+                     style={{
+                        height: "200px",
+                        width: "200px",
+                        objectFit: "cover",
+                     }}
+                  />
                </div>
-            )}
+            )} */}
          </section>
       </div>
    );
