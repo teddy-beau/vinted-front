@@ -31,7 +31,7 @@ const SignUp = ({ currentUser }) => {
 
    return (
       <div className="container">
-         <div className="login-section">
+         <section className="login-signup-section">
             <h1>S'inscrire</h1>
             <form onSubmit={handleSubmit}>
                <input
@@ -83,7 +83,7 @@ const SignUp = ({ currentUser }) => {
                </button>
             </form>
             <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
-         </div>
+         </section>
       </div>
    );
 };

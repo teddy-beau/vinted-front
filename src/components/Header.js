@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import SearchFilters from "./SearchFilters";
 import logo from "../assets/images/vinted-logo.png";
 import LoginModal from "./modals/LoginModal";
@@ -7,6 +7,7 @@ import SignUpModal from "./modals/SignUpModal";
 
 const Header = ({ currentUser, userToken, setData, limit, page }) => {
    const history = useHistory(); // Handle redirect upon click
+   const location = useLocation();
 
    const [hideLoginModal, setHideLoginModal] = useState(true);
    const [hideSignUpModal, setHideSignUpModal] = useState(true);
@@ -19,7 +20,7 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
                   <img src={logo} alt="Logo Vinted" />
                </Link>
                <SearchFilters setData={setData} limit={limit} page={page} />
-               {!userToken && (
+               {!userToken && location.pathname !== "/signup" && (
                   <div
                      className="white-button"
                      onClick={() => {
@@ -40,14 +41,16 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
                      Se deconnecter
                   </div>
                ) : (
-                  <div
-                     className="white-button"
-                     onClick={() => {
-                        setHideLoginModal(false);
-                     }}
-                  >
-                     Se connecter
-                  </div>
+                  location.pathname !== "/login" && (
+                     <div
+                        className="white-button"
+                        onClick={() => {
+                           setHideLoginModal(false);
+                        }}
+                     >
+                        Se connecter
+                     </div>
+                  )
                )}
                <Link
                   className="blue-button"

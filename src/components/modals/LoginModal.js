@@ -20,6 +20,7 @@ const LoginModal = ({ hideLoginModal, setHideLoginModal, currentUser }) => {
          );
          // console.log("response: ", response);
          currentUser(response.data.token);
+         setHideLoginModal(true);
          history.push("/");
       } catch (error) {
          console.log(error);
@@ -29,9 +30,9 @@ const LoginModal = ({ hideLoginModal, setHideLoginModal, currentUser }) => {
    return (
       <div
          className="modal-container"
-         style={hideLoginModal ? { display: "none" } : { display: "block" }}
+         style={{ display: hideLoginModal ? "none" : "block" }}
       >
-         <div className="login-section">
+         <section className="login-signup-section">
             <div
                onClick={() => {
                   setHideLoginModal(true);
@@ -67,8 +68,10 @@ const LoginModal = ({ hideLoginModal, setHideLoginModal, currentUser }) => {
                   Se connecter
                </button>
             </form>
-            <Link to="/signup">Pas encore de compte ? Inscris-toi !</Link>
-         </div>
+            <Link to="/signup" onClick={() => setHideLoginModal(true)}>
+               Pas encore de compte ? Inscris-toi !
+            </Link>
+         </section>
       </div>
    );
 };

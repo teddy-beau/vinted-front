@@ -15,90 +15,13 @@ a {
    color: #999;
 }
 
-//////// HEADER ////////
-header {
-   min-height: 60px;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   > :nth-child(1) {
-      img {
-         height: 40px;
-         margin-right: 50px;
-      }
-   }
-   > :nth-child(2) {
-      flex: 1;
-      margin-right: 50px;
-      > .search-bar {
-         margin: 10px 0;
-         background-color: #f5f6f7;
-         border-radius: 5px;
-         height: 40px;
-         width: auto;
-         min-width: 350px;
-         padding: 0 10px;
-         margin-right: auto;
-         display: flex;
-         align-items: center;
-         > svg {
-            color: #d4d4d4;
-            margin-right: 10px;
-         }
-         > input {
-            background: none;
-            border: none;
-            width: 100%;
-            font-size: 16px;
-            font-weight: 300;
-            color: #999;
-            &:focus {
-               outline: none;
-            }
-            &::placeholder {
-               color: #d4d4d4;
-            }
-         }
-      }
-      > .filters {
-         display: flex;
-         align-items: center;
-         margin: 40px 0 15px 0;
-         > :nth-child(1),
-         > :nth-child(3) {
-            font-size: 12px;
-            font-weight: 300;
-            margin-right: 10px;
-         }
-         > :nth-child(2) {
-            position: relative;
-            margin-right: 30px;
-         }
-         > :nth-child(4) {
-            min-width: 200px;
-            flex: 1;
-            margin-right: 20px;
-         }
-      }
-   }
-   > :nth-child(3),
-   > :nth-child(4) {
-      width: 135px;
-      margin: 0 10px;
-   }
-   > :nth-child(5) {
-      width: 160px;
-      margin-left: 50px;
-   }
-}
-
 //////// CONTAINERS ////////
 .container {
    width: 1280px;
    margin: 0 auto;
 }
 .modal-container {
-   width: 100vw;
+   width: 100%;
    height: 100vh;
    margin: 0;
    background-color: rgba(17, 17, 17, 0.8);
@@ -106,6 +29,7 @@ header {
    z-index: 150;
    position: absolute;
    top: 0;
+   position: fixed;
 }
 
 //////// BUTTON STYLES ////////
@@ -182,6 +106,83 @@ header {
    }
    &:focus {
       outline: none;
+   }
+}
+
+//////// HEADER ////////
+header {
+   min-height: 60px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   > :nth-child(1) {
+      img {
+         height: 40px;
+         margin-right: 50px;
+      }
+   }
+   > :nth-child(2) {
+      flex: 1;
+      margin-right: 50px;
+      > .search-bar {
+         margin: 10px 0;
+         background-color: #f5f6f7;
+         border-radius: 5px;
+         height: 40px;
+         width: auto;
+         min-width: 350px;
+         padding: 0 10px;
+         margin-right: auto;
+         display: flex;
+         align-items: center;
+         > svg {
+            color: #d4d4d4;
+            margin-right: 10px;
+         }
+         > input {
+            background: none;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 300;
+            color: #999;
+            &:focus {
+               outline: none;
+            }
+            &::placeholder {
+               color: #d4d4d4;
+            }
+         }
+      }
+      > .filters {
+         display: flex;
+         align-items: center;
+         margin: 40px 0 15px 0;
+         > :nth-child(1),
+         > :nth-child(3) {
+            font-size: 12px;
+            font-weight: 300;
+            margin-right: 10px;
+         }
+         > :nth-child(2) {
+            position: relative;
+            margin-right: 30px;
+         }
+         > :nth-child(4) {
+            min-width: 200px;
+            flex: 1;
+            margin-right: 20px;
+         }
+      }
+   }
+   > :nth-child(3),
+   > :nth-child(4) {
+      width: 135px;
+      margin: 0 10px;
+   }
+   > :nth-child(5) {
+      width: 160px;
+      margin-left: 50px;
    }
 }
 
@@ -320,6 +321,40 @@ header {
    }
 }
 
+//////// PUBLISH PAGE ////////
+.publish-section {
+   > h1 {
+      font-weight: 500;
+      font-size: 30px;
+      margin: 20px 0;
+   }
+   > form {
+      display: flex;
+      flex-direction: column;
+      > label {
+         margin-top: 10px;
+      }
+      > input,
+      textarea {
+         background: #f5f6f7;
+         border: none;
+         border-radius: 5px;
+         padding: 10px;
+         margin: 10px 0;
+         font-size: 16px;
+         font-family: "Roboto", sans-serif;
+         font-weight: 300;
+         // color: #000;
+         &:focus {
+            outline: none;
+         }
+         &::placeholder {
+            color: #d4d4d4;
+         }
+      }
+   }
+}
+
 //////// OFFER PAGE ////////
 .offer-body {
    background-color: #ebedee;
@@ -404,7 +439,7 @@ header {
 }
 
 //////// LOGIN & SIGNUP PAGE ////////
-.login-section {
+.login-signup-section {
    display: flex;
    flex-direction: column;
    width: 300px;

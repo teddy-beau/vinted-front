@@ -1,4 +1,5 @@
 import "./App.scss";
+import "./assets/styles/media-queries.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -53,11 +54,11 @@ function App() {
             page={page}
          />
          <Switch>
+            <Route path="/offer/publish">
+               <Publish userToken={userToken} />
+            </Route>
             <Route path="/offer/:_id">
                <Offer />
-            </Route>
-            <Route path="/offer/publish">
-               <Publish />
             </Route>
             <Route path="/signup">
                <SignUp currentUser={currentUser} />
