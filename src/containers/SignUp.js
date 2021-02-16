@@ -21,9 +21,8 @@ const SignUp = ({ currentUser }) => {
                password: inputPassword,
             }
          );
-         console.log("response: ", response);
          currentUser(response.data.token);
-         history.goBack();
+         history.goBack(); // User redirected to previous page
       } catch (error) {
          console.log(error);
       }

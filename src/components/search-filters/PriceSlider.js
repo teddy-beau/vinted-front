@@ -16,10 +16,8 @@ const PriceSlider = ({ setPriceMax, setPriceMin }) => {
                   setValues(values);
                   setPriceMax(values[1]);
                   setPriceMin(values[0]);
-                  // console.log(values);
                }}
                renderTrack={({ props, children }) => {
-                  // console.log(children);
                   return (
                      <div
                         style={{

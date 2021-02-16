@@ -9,13 +9,14 @@ const Hero = ({ userToken }) => {
          <img
             className="tear-img"
             src={tearHero}
-            alt="Teared of paper effect"
+            alt="Teared off paper effect"
          />
          <div className="container">
             <div>
                <h1>Prêts à faire du tri dans vos placards ?</h1>
                <Link
                   className="blue-button-dark"
+                  // If not logged in redirected to login page
                   to={userToken ? "/offer/publish" : "/login"}
                >
                   Commencer à vendre{" "}

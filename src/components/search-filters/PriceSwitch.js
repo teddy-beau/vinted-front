@@ -2,9 +2,10 @@ import { Switch, withStyles } from "@material-ui/core";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const PriceSwitch = ({ sort, setSort }) => {
+const PriceSwitch = ({ setSort }) => {
    const [checked, setChecked] = useState(false);
 
+   // Update state used for sorting articles by price
    const toggleSort = (event) => {
       setChecked((checked) => !checked);
       if (checked) {

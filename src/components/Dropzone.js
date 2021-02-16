@@ -7,27 +7,22 @@ const Dropzone = ({ setOfferPictures }) => {
       display: "flex",
       flexDirection: "row",
       flexWrap: "wrap",
-      marginTop: 16,
    };
-
    const thumb = {
       display: "inline-flex",
       borderRadius: 2,
       border: "1px solid #eaeaea",
-      marginBottom: 8,
-      marginRight: 8,
+      margin: 8,
       width: 200,
       height: 200,
       padding: 4,
       boxSizing: "border-box",
    };
-
    const thumbInner = {
       display: "flex",
       minWidth: 0,
       overflow: "hidden",
    };
-
    const img = {
       display: "block",
       width: "auto",
@@ -35,7 +30,7 @@ const Dropzone = ({ setOfferPictures }) => {
    };
 
    const [files, setFiles] = useState([]);
-   // const [preview, setPreview] = useState("");
+
    const { getRootProps, getInputProps } = useDropzone({
       accept: "image/*",
       onDrop: (acceptedFiles) => {
@@ -47,18 +42,21 @@ const Dropzone = ({ setOfferPictures }) => {
             )
          );
          console.log("acceptedFiles", acceptedFiles);
-         setOfferPictures(acceptedFiles);
+         // Set-up for single file upload (index 0)
+         setOfferPictures(acceptedFiles[0]);
       },
    });
+
+   // File preview
    const thumbs = files.map((file) => (
       <div style={thumb} key={file.name}>
          <div style={thumbInner}>
             <img src={file.preview} style={img} alt={file.name} />
          </div>
-         <div
+         <div // Icon to remove a selected file on click
             onClick={() => {
                const newArr = [...files];
-               newArr.splice(file, 1); // Problématique car array index !
+               newArr.splice(file, 1); // Needs to be fixed (removing index of array instead of specific file)
                setFiles(newArr);
             }}
          >
@@ -85,7 +83,7 @@ const Dropzone = ({ setOfferPictures }) => {
    return (
       <section>
          <div {...getRootProps({ className: "dropzone" })}>
-            <input {...getInputProps()} />
+            <input {...getInputProps()} required />
             <p>
                Glisse les photos de ton article ici ou clique ci-dessous pour
                sélectionner tes fichiers.

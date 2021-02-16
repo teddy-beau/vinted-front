@@ -17,17 +17,7 @@ const OfferCard = ({ offer }) => {
                   />
                   <div>{offer.owner.account.username}</div>
                </div>
-               {/* Problème avec l'enregistrement des images en tableau */}
                <img src={offer.product_pictures[0].secure_url} alt="Product" />
-               {/* <img
-                  src={
-                     offer.product_pictures[0].public_name === "picture1"
-                        ? offer.product_pictures[0].secure_url
-                        : offer.product_pictures[1].secure_url
-                  }
-                  alt="Product"
-               /> */}
-
                <div>
                   <div>
                      <div>
@@ -38,12 +28,8 @@ const OfferCard = ({ offer }) => {
                      )}
                      {offer.product_details[0].MARQUE && (
                         <div>{offer.product_details[0].MARQUE}</div>
-                     )}{" "}
+                     )}
                   </div>
-                  {/* <div>
-                     <div><3 1</div>
-                     <div>Boosted</div>
-                  </div> */}
                </div>
             </div>
          </Link>

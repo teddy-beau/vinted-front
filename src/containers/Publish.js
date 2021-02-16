@@ -4,13 +4,11 @@ import { useHistory } from "react-router-dom";
 import Dropzone from "../components/Dropzone";
 
 const Publish = ({ userToken }) => {
-   // Also possible to get the cookie directly here with cookie-js
-
    const history = useHistory(); // To redirect upon submission
 
    const [offerTitle, setOfferTitle] = useState("");
    const [offerDescription, setOfferDescription] = useState("");
-   const [offerPrice, setOfferPrice] = useState();
+   const [offerPrice, setOfferPrice] = useState(0);
    const [offerBrand, setOfferBrand] = useState("");
    const [offerSize, setOfferSize] = useState("");
    const [offerCondition, setOfferCondition] = useState("");
@@ -20,19 +18,6 @@ const Publish = ({ userToken }) => {
 
    const handleSubmit = async (event) => {
       event.preventDefault();
-
-      // const fileKeys = Object.keys(offerPictures);
-      // console.log("fileKeys", fileKeys);
-
-      // const newOfferPictures = [];
-      // fileKeys.forEach((fileKey) => {
-      //    console.log("fileKey", fileKey);
-      //    newOfferPictures.push(offerPictures[fileKey]);
-      // });
-      // console.log("newOfferPictures", newOfferPictures);
-      // setOfferPictures(newOfferPictures);
-      // console.log("finalArr", offerPictures);
-
       // Need a FormData type object to send files to server
       const formData = new FormData();
       formData.append("title", offerTitle);
@@ -45,27 +30,24 @@ const Publish = ({ userToken }) => {
       formData.append("city", offerCity);
       formData.append("pictures", offerPictures);
 
-      console.log("formData", formData);
-
       try {
          const response = await axios.post(
             "https://vinted-clone.herokuapp.com/offer/publish",
             formData,
             {
                headers: {
+                  // User must be authenticated
                   Authorization: `Bearer ${userToken}`,
                   "Content-Type": "multipart/form-data",
                },
             }
          );
-         console.log("response: ", response.data);
-         // console.log("offerPictures", offerPictures);
+         // User redirected to the offer page
          history.push(`/offer/${response.data._id}`);
       } catch (error) {
          console.log(error);
       }
    };
-   console.log("offerPictures", offerPictures);
 
    return (
       <div className="offer-body">
@@ -75,19 +57,16 @@ const Publish = ({ userToken }) => {
                <form onSubmit={handleSubmit}>
                   <div>
                      <div>
-                        <Dropzone
-                           // offerPictures={offerPictures}
-                           setOfferPictures={setOfferPictures}
-                        />
-                        {/* <label htmlFor="pictures">Photos</label> */}
-                        {/* <input
+                        <Dropzone setOfferPictures={setOfferPictures} />
+                        {/* Input when no Dropzone: */}
+                        {/* <label htmlFor="pictures">Photos</label>
+                        <input
                            type="file"
                            required
                            multiple={true}
                            name="pictures"
                            id="pictures"
                            onChange={(event) => {
-                              // setOfferPictures(event.target.files);
                               setOfferPictures(event.target.files[0]);
                            }}
                         /> */}

@@ -10,7 +10,7 @@ const Home = ({ data, setData, limit, setLimit, page, setPage }) => {
       const fetchData = async () => {
          try {
             const response = await axios.get(
-               `https://vinted-clone.herokuapp.com/offers`
+               `https://vinted-clone.herokuapp.com/offers?sort=price-asc`
             );
             setData(response.data);
             setIsLoading(false);

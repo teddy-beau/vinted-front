@@ -14,7 +14,7 @@ const SearchFilters = ({ setData, limit, page }) => {
    const [priceMax, setPriceMax] = useState(500);
    const [sort, setSort] = useState("price-asc");
 
-   // API REQUEST
+   // API request
    const [isLoading, setIsLoading] = useState(true);
    useEffect(() => {
       const fetchData = async () => {
@@ -44,11 +44,10 @@ const SearchFilters = ({ setData, limit, page }) => {
                onChange={(event) => setSearchInput(event.target.value)}
             />
          </div>
-         {/* Filters hidden when not on path "/" */}
          {location.pathname === "/" && (
+            //   Filters hidden when not on path "/"
             <div className="filters">
-               <PriceSwitch sort={sort} setSort={setSort} />
-
+               <PriceSwitch setSort={setSort} />
                <PriceSlider
                   setPriceMin={setPriceMin}
                   setPriceMax={setPriceMax}

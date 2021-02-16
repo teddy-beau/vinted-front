@@ -9,6 +9,7 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
    const history = useHistory(); // Handle redirect upon click
    const location = useLocation();
 
+   // State used to hide/display modals on click
    const [hideLoginModal, setHideLoginModal] = useState(true);
    const [hideSignUpModal, setHideSignUpModal] = useState(true);
 
@@ -21,6 +22,7 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
                </Link>
                <SearchFilters setData={setData} limit={limit} page={page} />
                {!userToken && location.pathname !== "/signup" && (
+                  // Not displayed to logged in users and on sign up page
                   <div
                      className="white-button"
                      onClick={() => {
@@ -31,6 +33,7 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
                   </div>
                )}
                {userToken ? (
+                  // Displayed when user is logged in
                   <div
                      className="red-button"
                      onClick={() => {
@@ -41,6 +44,7 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
                      Se deconnecter
                   </div>
                ) : (
+                  // Displayed when user isn't logged in and not on login page
                   location.pathname !== "/login" && (
                      <div
                         className="white-button"
@@ -54,6 +58,7 @@ const Header = ({ currentUser, userToken, setData, limit, page }) => {
                )}
                <Link
                   className="blue-button"
+                  // User not logged in wre redirected to login page
                   to={userToken ? "/offer/publish" : "/login"}
                >
                   Vends tes articles

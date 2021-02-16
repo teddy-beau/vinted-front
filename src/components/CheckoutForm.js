@@ -10,21 +10,26 @@ const CheckoutForm = ({
    productPrice,
    deliveryFee,
 }) => {
+   // Stripe set up
    const stripe = useStripe();
    const elements = useElements();
    const [completed, setCompleted] = useState(false);
 
+   // Info for billing
    const insuranceFee = 0.3;
    const total = productPrice + insuranceFee + deliveryFee;
 
+   // When user proceeds with payment :
    const handleSubmit = async (event) => {
       event.preventDefault();
       try {
          const cardElement = elements.getElement(CardElement);
+         // Send bank details and retrieve transaction token
          const stripeResponse = await stripe.createToken(cardElement, {
             name: userId,
          });
          const stripeToken = stripeResponse.token.id;
+         // Send token to backend
          const response = await axios.post(
             "https://vinted-clone.herokuapp.com/checkout",
             {
@@ -79,6 +84,7 @@ const CheckoutForm = ({
                </button>
             </form>
          ) : (
+            // Confirmation message:
             <div
                style={{
                   color: "#26bb6a",
