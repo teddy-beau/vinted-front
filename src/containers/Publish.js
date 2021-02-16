@@ -45,6 +45,8 @@ const Publish = ({ userToken }) => {
       formData.append("city", offerCity);
       formData.append("pictures", offerPictures);
 
+      console.log("formData", formData);
+
       try {
          const response = await axios.post(
             "https://vinted-clone.herokuapp.com/offer/publish",
@@ -56,7 +58,7 @@ const Publish = ({ userToken }) => {
                },
             }
          );
-         // console.log("response: ", response.data);
+         console.log("response: ", response.data);
          // console.log("offerPictures", offerPictures);
          history.push(`/offer/${response.data._id}`);
       } catch (error) {
@@ -74,7 +76,7 @@ const Publish = ({ userToken }) => {
                   <div>
                      <div>
                         <Dropzone
-                           offerPictures={offerPictures}
+                           // offerPictures={offerPictures}
                            setOfferPictures={setOfferPictures}
                         />
                         {/* <label htmlFor="pictures">Photos</label> */}

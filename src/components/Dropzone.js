@@ -46,6 +46,7 @@ const Dropzone = ({ setOfferPictures }) => {
                })
             )
          );
+         console.log("acceptedFiles", acceptedFiles);
          setOfferPictures(acceptedFiles);
       },
    });

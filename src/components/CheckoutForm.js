@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CheckoutForm = ({
    userToken,
@@ -12,8 +12,10 @@ const CheckoutForm = ({
 }) => {
    const stripe = useStripe();
    const elements = useElements();
-
    const [completed, setCompleted] = useState(false);
+
+   const insuranceFee = 0.3;
+   const total = productPrice + insuranceFee + deliveryFee;
 
    const handleSubmit = async (event) => {
       event.preventDefault();
@@ -22,23 +24,20 @@ const CheckoutForm = ({
          const stripeResponse = await stripe.createToken(cardElement, {
             name: userId,
          });
-         console.log("stripeResponse", stripeResponse);
          const stripeToken = stripeResponse.token.id;
          const response = await axios.post(
-            "http://localhost:3100/checkout",
+            "https://vinted-clone.herokuapp.com/checkout",
             {
                stripeToken,
                productTitle,
-               productPrice,
+               total,
             },
             {
                headers: {
                   Authorization: `Bearer ${userToken}`,
-                  "Content-Type": "multipart/form-data",
                },
             }
          );
-         console.log("response.data", response.data);
          if (response.data.status === "succeeded") {
             setCompleted(true);
          }
@@ -47,12 +46,9 @@ const CheckoutForm = ({
       }
    };
 
-   const insuranceFee = 0.3;
-   const total = productPrice + insuranceFee + deliveryFee;
-
    return (
       <div>
-         <div>Résumé de la commande</div>
+         <div>Résumé de la commande :</div>
          <div>
             <div>{productTitle}</div>
             <div>{productPrice.toFixed(2).replace(".", ",")}&nbsp;€</div>
@@ -78,12 +74,26 @@ const CheckoutForm = ({
          {!completed ? (
             <form onSubmit={handleSubmit}>
                <CardElement />
-               <button type="submit" className="blue-button-dark">
+               <button type="submit" className="green-button">
                   Confirmer le paiement
                </button>
             </form>
          ) : (
-            <div>Paiement effectué !</div>
+            <div
+               style={{
+                  color: "#26bb6a",
+                  fontWeight: 500,
+                  fontSize: 18,
+                  alignSelf: "center",
+                  paddingTop: 15,
+               }}
+            >
+               <FontAwesomeIcon
+                  icon="check-circle"
+                  style={{ marginRight: 10 }}
+               />
+               Paiement effectué !
+            </div>
          )}
       </div>
    );

@@ -25,8 +25,16 @@ import {
    faTimesCircle,
    faSearch,
    faPlusCircle,
+   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faCaretUp, faCaretDown, faTimesCircle, faSearch, faPlusCircle);
+library.add(
+   faCaretUp,
+   faCaretDown,
+   faTimesCircle,
+   faSearch,
+   faPlusCircle,
+   faCheckCircle
+);
 
 function App() {
    const [userToken, setUserToken] = useState(Cookies.get("userToken") || null); // For auth
