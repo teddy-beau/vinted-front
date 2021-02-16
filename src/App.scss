@@ -501,7 +501,7 @@ header {
       > * {
          margin-bottom: 15px;
       }
-      > *:not(form) {
+      > div {
          display: flex;
          justify-content: space-between;
       }

@@ -10,7 +10,7 @@ const stripePromise = loadStripe(
 const Checkout = () => {
    // To retrieve states from history (offer details)
    const location = useLocation();
-   const { productPrice, productTitle } = location.state;
+   const { userId, productTitle, productPrice, deliveryFee } = location.state;
 
    return (
       <div className="offer-body">
@@ -19,8 +19,10 @@ const Checkout = () => {
                <h1>Commande et paiement</h1>
                <Elements stripe={stripePromise}>
                   <CheckoutForm
-                     productPrice={productPrice}
+                     userId={userId}
                      productTitle={productTitle}
+                     productPrice={productPrice}
+                     deliveryFee={deliveryFee}
                   />
                </Elements>
             </section>

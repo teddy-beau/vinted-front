@@ -3,7 +3,13 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 import axios from "axios";
 
-const CheckoutForm = ({ productTitle, productPrice }) => {
+const CheckoutForm = ({
+   userToken,
+   userId,
+   productTitle,
+   productPrice,
+   deliveryFee,
+}) => {
    const stripe = useStripe();
    const elements = useElements();
 
@@ -14,15 +20,24 @@ const CheckoutForm = ({ productTitle, productPrice }) => {
       try {
          const cardElement = elements.getElement(CardElement);
          const stripeResponse = await stripe.createToken(cardElement, {
-            name: "coucou",
+            name: userId,
          });
          console.log("stripeResponse", stripeResponse);
          const stripeToken = stripeResponse.token.id;
-         const response = await axios.post("http://localhost:3100/checkout", {
-            stripeToken,
-            productTitle,
-            productPrice,
-         });
+         const response = await axios.post(
+            "http://localhost:3100/checkout",
+            {
+               stripeToken,
+               productTitle,
+               productPrice,
+            },
+            {
+               headers: {
+                  Authorization: `Bearer ${userToken}`,
+                  "Content-Type": "multipart/form-data",
+               },
+            }
+         );
          console.log("response.data", response.data);
          if (response.data.status === "succeeded") {
             setCompleted(true);
@@ -32,28 +47,33 @@ const CheckoutForm = ({ productTitle, productPrice }) => {
       }
    };
 
+   const insuranceFee = 0.3;
+   const total = productPrice + insuranceFee + deliveryFee;
+
    return (
       <div>
          <div>Résumé de la commande</div>
          <div>
             <div>{productTitle}</div>
-            <div>{productPrice} €</div>
+            <div>{productPrice.toFixed(2).replace(".", ",")}&nbsp;€</div>
          </div>
          <div>
-            <div>Frais protection acheteurs</div>
-            <div>0.30 €</div>
+            <div>Frais de protection des acheteurs</div>
+            <div>{insuranceFee.toFixed(2).replace(".", ",")}&nbsp;€</div>
          </div>
          <div>
             <div>Frais de port</div>
-            <div>2.50 €</div>
+            <div>{deliveryFee.toFixed(2).replace(".", ",")}&nbsp;€</div>
          </div>
          <div>
             <div>Total</div>
-            <div> €</div>
+            <div>{total.toFixed(2).replace(".", ",")}&nbsp;€</div>
          </div>
          <p>
-            Il ne vous reste plus qu'un étape pour vous offrir Article. Vous
-            allez payer XX € (frais de protection et frais de port inclus).
+            Il ne vous reste plus qu'un étape pour vous offrir
+            <strong> {productTitle}</strong>. Vous allez payer
+            <strong> {total.toFixed(2).replace(".", ",")}&nbsp;€ </strong>(frais
+            de protection et frais de port inclus).
          </p>
          {!completed ? (
             <form onSubmit={handleSubmit}>

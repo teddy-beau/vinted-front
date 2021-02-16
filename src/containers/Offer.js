@@ -5,12 +5,14 @@ import axios from "axios";
 import OfferPicturesCarousel from "../components/OfferPicturesCarousel";
 import noAvatar from "../assets/images/no-avatar.png";
 
-const Offer = () => {
+const Offer = ({ userToken }) => {
    const { _id } = useParams();
    const history = useHistory();
    // For the API request:
    const [data, setData] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
+   // To be passed over at checkout :
+   const deliveryFee = 2.5;
 
    useEffect(() => {
       const fetchData = async () => {
@@ -69,12 +71,19 @@ const Offer = () => {
                </div>
                <button
                   className="blue-button-dark"
-                  onClick={() =>
-                     history.push("/checkout", {
-                        productTitle: data.product_name,
-                        productPrice: data.product_price,
-                     })
-                  }
+                  onClick={() => {
+                     if (userToken) {
+                        history.push("/checkout", {
+                           userId: data.owner._id,
+                           productTitle: data.product_name,
+                           productPrice: data.product_price,
+                           deliveryFee: deliveryFee,
+                           userToken: userToken,
+                        });
+                     } else {
+                        history.push("/login");
+                     }
+                  }}
                >
                   Acheter
                </button>
