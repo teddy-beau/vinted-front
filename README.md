@@ -1,6 +1,7 @@
 # Vinted Clone - Frontend
 
-Create React App, React Router, Node Sass
+This project is based on the online marketplace for secondhand clothing and accessories Vinted.
+![Vinted logo](https://github.com/teddy-beau/vinted-front/blob/main/src/assets/images/vinted-logo.png?raw=true)
 
 Backend: https://github.com/teddy-beau/vinted-back
 
@@ -62,4 +63,4 @@ Backend: https://github.com/teddy-beau/vinted-back
 
 -  Display the offer title, price, additional fees (insurance and delivery) as well as the total.
 -  Payment is powered by Stripe and is functional. To test the payment use the following card details : card number = 4242 4242 4242 4242, exp. date = 04/24, CVC = 242, zip = 42424
--  Upon clicking the payment button a confirmation message is displayed
+-  Upon clicking the payment button a confirmation message is displayed.
