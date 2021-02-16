@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SignUpModal = ({ hideSignUpModal, setHideSignUpModal, currentUser }) => {
@@ -8,7 +8,6 @@ const SignUpModal = ({ hideSignUpModal, setHideSignUpModal, currentUser }) => {
    const [inputEmail, setInputEmail] = useState("");
    const [inputPhone, setInputPhone] = useState("");
    const [inputPassword, setInputPassword] = useState("");
-   const history = useHistory(); // To redirect upon submission
 
    const handleSubmit = async (event) => {
       event.preventDefault();
@@ -22,10 +21,8 @@ const SignUpModal = ({ hideSignUpModal, setHideSignUpModal, currentUser }) => {
                password: inputPassword,
             }
          );
-         console.log("response: ", response);
          currentUser(response.data.token);
          setHideSignUpModal(true);
-         history.push("/");
       } catch (error) {
          console.log(error);
       }

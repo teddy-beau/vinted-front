@@ -43,7 +43,7 @@ a {
    font-weight: 300;
    border: 1px solid #21adb6;
    color: #fff;
-   font-family: "Roboto", sans-serif;
+   font-family: inherit;
    background-color: #21adb6;
    cursor: pointer;
    &:hover {
@@ -61,7 +61,7 @@ a {
    font-weight: 300;
    border: 1px solid #21adb6;
    color: #fff;
-   font-family: "Roboto", sans-serif;
+   font-family: inherit;
    background-color: #21adb6;
    cursor: pointer;
    &:hover {
@@ -81,7 +81,7 @@ a {
    font-weight: 300;
    border: 1px solid #21adb6;
    color: #21adb6;
-   font-family: "Roboto", sans-serif;
+   font-family: inherit;
    cursor: pointer;
    &:hover {
       background-color: #21adb6;
@@ -101,7 +101,7 @@ a {
    font-weight: 300;
    border: 1px solid #c2175b;
    color: #c2175b;
-   font-family: "Roboto", sans-serif;
+   font-family: inherit;
    background: none;
    cursor: pointer;
    &:hover {
@@ -129,12 +129,13 @@ header {
       flex: 1;
       margin-right: 50px;
       > .search-bar {
+         box-sizing: border-box;
          margin: 10px 0;
          background-color: #f5f6f7;
          border-radius: 5px;
          height: 40px;
          width: auto;
-         min-width: 350px;
+         min-width: 230px;
          padding: 0 10px;
          margin-right: auto;
          display: flex;
@@ -202,7 +203,7 @@ header {
       position: absolute;
       bottom: 0;
       right: 0%;
-      z-index: 40;
+      z-index: 10;
       width: 1000px;
    }
    > div {
@@ -218,7 +219,7 @@ header {
          border-radius: 3px;
          box-shadow: 0 0 2px rgba(17, 17, 17, 0.2);
          position: absolute;
-         z-index: 50;
+         z-index: 20;
          top: calc((500px - 220px) / 2 - 30px);
          :first-child {
             font-size: 34px;
@@ -347,7 +348,7 @@ header {
          &:first-child {
             > div > section {
                display: flex;
-               flex-direction: column;
+               // flex-direction: column;
                align-items: center;
                width: 100%;
                > div {
@@ -412,6 +413,9 @@ header {
          display: flex;
          justify-content: center;
       }
+      .react-multiple-carousel__arrow {
+         z-index: 100;
+      }
       img {
          max-height: 600px;
          max-width: 450px;
@@ -473,6 +477,55 @@ header {
             object-fit: cover;
             border-radius: 50%;
             margin-right: 10px;
+         }
+      }
+   }
+}
+
+//////// CHECKOUT PAGE ////////
+.checkout {
+   background-color: #fff;
+   width: 550px;
+   padding: 25px;
+   margin: 0 auto;
+   > h1 {
+      font-weight: 500;
+      font-size: 30px;
+      margin-bottom: 20px;
+   }
+   > div {
+      // Return CheckoutForm
+      font-weight: 300;
+      display: flex;
+      flex-direction: column;
+      > * {
+         margin-bottom: 15px;
+      }
+      > *:not(form) {
+         display: flex;
+         justify-content: space-between;
+      }
+      > div:nth-child(1) {
+         color: #d4d4d4;
+      }
+      > div:nth-child(5) {
+         border-top: solid 1px #d4d4d4;
+         margin-top: 20px;
+         padding-top: 35px;
+         font-size: 18px;
+         font-weight: 500;
+         margin-bottom: 50px;
+      }
+      > form {
+         > :first-child {
+            margin: 15px 0 25px 0;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f5f6f7;
+         }
+         > :last-child {
+            padding: 0 20px;
+            margin: auto;
          }
       }
    }

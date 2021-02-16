@@ -19,7 +19,7 @@ const Login = ({ currentUser }) => {
          );
          // console.log("response: ", response);
          currentUser(response.data.token);
-         history.push("/");
+         history.goBack();
       } catch (error) {
          console.log(error);
       }

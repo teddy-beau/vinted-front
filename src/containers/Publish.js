@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import Dropzone from "../components/Dropzone";
 
 const Publish = ({ userToken }) => {
+   // Also possible to get the cookie directly here with cookie-js
+
    const history = useHistory(); // To redirect upon submission
 
    const [offerTitle, setOfferTitle] = useState("");

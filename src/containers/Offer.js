@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -7,7 +7,8 @@ import noAvatar from "../assets/images/no-avatar.png";
 
 const Offer = () => {
    const { _id } = useParams();
-
+   const history = useHistory();
+   // For the API request:
    const [data, setData] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
 
@@ -66,7 +67,17 @@ const Offer = () => {
                   />
                   <div>{data.owner.account.username}</div>
                </div>
-               <button className="blue-button-dark">Acheter</button>
+               <button
+                  className="blue-button-dark"
+                  onClick={() =>
+                     history.push("/checkout", {
+                        productTitle: data.product_name,
+                        productPrice: data.product_price,
+                     })
+                  }
+               >
+                  Acheter
+               </button>
             </div>
          </div>
       </div>

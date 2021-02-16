@@ -10,6 +10,7 @@ import Offer from "./containers/Offer";
 import Publish from "./containers/Publish";
 import SignUp from "./containers/SignUp";
 import Login from "./containers/Login";
+import Checkout from "./containers/Checkout";
 
 // Then import components
 import Header from "./components/Header";
@@ -60,6 +61,9 @@ function App() {
             </Route>
             <Route path="/offer/:_id">
                <Offer />
+            </Route>
+            <Route path="/checkout">
+               <Checkout />
             </Route>
             <Route path="/signup">
                <SignUp currentUser={currentUser} />
