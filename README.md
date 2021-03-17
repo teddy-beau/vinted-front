@@ -6,12 +6,10 @@ This project is based on the online marketplace for secondhand clothing and acce
 Deploy: https://vinted-teddy.netlify.app/
 Backend: https://github.com/teddy-beau/vinted-back
 
-**Homepage**
-
+**Homepage:**
 ![Screenshot 1](./_preview/vinted-screen-01.gif)
 
-**Article page**
-
+**Article page:**
 ![Screenshot 2](./_preview/vinted-screen-02.gif)
 
 ## Packages used
