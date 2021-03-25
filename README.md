@@ -81,4 +81,22 @@ Backend: https://github.com/teddy-beau/vinted-back
 
 ## Setup Instructions
 
+Clone this repository :
+
+```
+git clone https://github.com/teddy-beau/vinted-front.git
+```
+
+Install dependencies with yarn:
+
+```
+yarn install
+```
+
+Once the installation is complete, run it:
+
+```
+yarn start
+```
+
 ## Status & Backlog
