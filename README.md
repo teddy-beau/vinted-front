@@ -14,6 +14,8 @@
 
 ## Stack & Features
 
+Website built with React JS. The backend is developed with Node JS and the database uses a cloud-base Mongo DB solution.
+
 ### Packages used
 
 -  Fontawesome (icons)
@@ -29,13 +31,10 @@
 
 ### Main features
 
-#### Header
+#### Home page
 
--  Search bar: look through the database for offer title matching the input
 -  Login and sign up button: open a modal (when the user is logged in the login button turns into a logout button)
-
-#### Home
-
+-  Search bar: look through the database for offer title matching the input
 -  Price switch: sort offers by ascending or descending price
 -  Price slider: filter offers that match the selected range
 -  Offer list: display the offers matching the filters (by default price are ascending and 25 result are displayed per page)
@@ -81,10 +80,14 @@
 **Homepage:**
 
 <img src="./_preview/vinted-home.png" alt="Screenshot Vinted Homepage" />
+<br />
+<br />
 
 **Signup form:**
 
 <img src="./_preview/vinted-signup.png" alt="Screenshot Vinted Sign up" />
+<br />
+<br />
 
 **Offer page:**
 
@@ -111,3 +114,7 @@ yarn start
 ```
 
 ## Status & Backlog
+
+Work in progress 🛠
+
+**Next feature**: multiple image upload when publishing an offer.
