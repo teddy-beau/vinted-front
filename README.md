@@ -1,11 +1,13 @@
 # Vinted Clone - Frontend
 
 <div align="center"><p>This project is based on Vinted, an online marketplace for secondhand clothing.</p>
-<img src="https://github.com/teddy-beau/vinted-front/blob/main/src/assets/images/vinted-logo.png?raw=true" alt="Vinted logo" width="200" /></div>
+<img src="https://github.com/teddy-beau/vinted-front/blob/main/src/assets/images/vinted-logo.png?raw=true" alt="Vinted logo" width="170" /></div>
 
-Deploy: https://vinted-teddy.netlify.app/
+Live site (Netlify deploy): https://vinted-teddy.netlify.app/
 
-Backend: https://github.com/teddy-beau/vinted-back
+Backend repository: https://github.com/teddy-beau/vinted-back
+
+<div align="center"><img src="./_preview/vinted-login-buy.gif" alt="Gif login and purchase" width="600" style="box-shadow: 2px 2px 8px lightgrey"/></div>
 
 ## Stack & Features
 
@@ -73,11 +75,15 @@ Backend: https://github.com/teddy-beau/vinted-back
 
 **Homepage:**
 
-![Screenshot 1](./_preview/vinted-screen-01.gif)
+<img  src="./_preview/vinted-home.png" alt="Screenshot Vinted Homepage" style="box-shadow: 2px 2px 8px lightgrey; margin-bottom: 20px"/>
 
-**Article page:**
+**Signup form:**
 
-![Screenshot 2](./_preview/vinted-screen-02.gif)
+<img  src="./_preview/vinted-signup.png" alt="Screenshot Vinted Sign up" style="box-shadow: 2px 2px 8px lightgrey; margin-bottom: 20px"/>
+
+**Offer page:**
+
+<img  src="./_preview/vinted-offer.png" alt="Screenshot Vinted Offer" style="box-shadow: 2px 2px 8px lightgrey; margin-bottom: 20px"/>
 
 ## Setup Instructions
 
