@@ -4,6 +4,7 @@ import axios from "axios";
 
 import OfferPicturesCarousel from "../components/OfferPicturesCarousel";
 import noAvatar from "../assets/images/no-avatar.png";
+import Loader from "../components/Loader";
 
 const Offer = ({ userToken }) => {
    const { _id } = useParams();
@@ -30,7 +31,7 @@ const Offer = ({ userToken }) => {
    }, [_id]);
 
    return isLoading ? (
-      <div className="container loading-message">En cours de chargement...</div>
+      <Loader />
    ) : (
       <div className="offer-body">
          <div className="container offer-details">

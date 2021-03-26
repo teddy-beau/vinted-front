@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import OfferCard from "../components/OfferCard";
+import Loader from "../components/Loader";
 
 const Home = ({ data, setData, limit, setLimit, page, setPage }) => {
    const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ const Home = ({ data, setData, limit, setLimit, page, setPage }) => {
    }, [setData]);
 
    return isLoading ? (
-      <div className="container loading-message">En cours de chargement...</div>
+      <Loader />
    ) : (
       <div className="container">
          {/* Cards of the offers */}

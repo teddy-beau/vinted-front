@@ -14,20 +14,20 @@
 
 ## Stack & Features
 
-Website built with React JS. The backend is developed with Node JS and the database uses a cloud-base Mongo DB solution.
+Website built with [React JS](https://reactjs.org/) using [Create React App](https://create-react-app.dev/docs/getting-started/) and deployed on Netlify. The backend is developed with Node JS and the database uses Mongo DB cloud-based solution.
 
-### Packages used
+### Main dependencies
 
--  Fontawesome (icons)
--  Material UI (sorting switch asc/desc)
 -  Stripe (payment)
--  Axios (HTTP requests)
+-  Axios (API requests)
 -  JS Cookie (cookie management)
 -  React Router Dom (navigation)
 -  React Dropzone (drag and drop for file upload)
 -  React Multi Carousel (carousel for offer pictures)
--  React Range (to sort offers by proce range)
+-  React Range (to sort offers by price range)
+-  Material UI (sorting switch for asc/desc prices)
 -  Node Sass (scss)
+-  Fontawesome (icons)
 
 ### Main features
 
@@ -40,19 +40,11 @@ Website built with React JS. The backend is developed with Node JS and the datab
 -  Offer list: display the offers matching the filters (by default price are ascending and 25 result are displayed per page)
 -  Page navigation (bottom of the page): navigate through pages and define how many offers are displayed per page
 
-#### Sign up
+#### Sign up and login
 
--  Email, username and password are required.
+-  Email, username (sign up only) and password are required.
 -  Upon submission a cookie with a user token is created. It will be deleted on logout.
-
-#### Login
-
--  Email and password are required.
--  Upon submission a cookie with a user token is created. It will be deleted on logout.
-
-#### Log out
-
--  Upon submission the cookie with the user token is deleted.
+-  The password is never saved in the database to ensure maximum security.
 
 #### Publish page
 
@@ -77,21 +69,33 @@ Website built with React JS. The backend is developed with Node JS and the datab
 
 <div align="center">
 
-**Homepage:**
+**Homepage with dynamic search filters:**
 
-<img src="./_preview/vinted-home.png" alt="Screenshot Vinted Homepage" />
+<img src="./_preview/vinted-home.png" alt="Screenshot Vinted Homepage" width="600"/>
 <br />
 <br />
 
-**Signup form:**
+**Signup modal:**
 
-<img src="./_preview/vinted-signup.png" alt="Screenshot Vinted Sign up" />
+<img src="./_preview/vinted-signup.png" alt="Screenshot Vinted Sign up" width="600"/>
+<br />
+<br />
+
+**Publishing an offer:**
+
+<img src="./_preview/vinted-publish.png" alt="Screenshot Vinted Publish" width="600"/>
 <br />
 <br />
 
 **Offer page:**
 
-<img src="./_preview/vinted-offer.png" alt="Screenshot Vinted Offer" /></div>
+<img src="./_preview/vinted-offer.png" alt="Screenshot Vinted Offer" width="600"/>
+<br />
+<br />
+
+**Checkout (payment with Stripe):**
+
+<img src="./_preview/vinted-checkout.png" alt="Screenshot Vinted Checkout" width="600"/></div>
 
 ## Setup Instructions
 
@@ -115,6 +119,9 @@ yarn start
 
 ## Status & Backlog
 
-Work in progress 🛠
+✅ This project is complete and functional.
 
-**Next feature**: multiple image upload when publishing an offer.
+🛠 However, some improvements have been considered for the future:
+
+-  Multiple image upload when publishing an offer
+-  User profile page (with user info update)
