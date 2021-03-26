@@ -16,6 +16,8 @@
 
 Website built with [React JS](https://reactjs.org/) using [Create React App](https://create-react-app.dev/docs/getting-started/) and deployed on Netlify. The backend is developed with Node JS and the database uses Mongo DB cloud-based solution.
 
+_Please note that this project should be viewed on desktop only, it has very basic responsiveness and isn't well suported on mobile devices at the moment._
+
 ### Main dependencies
 
 -  Stripe (payment)
@@ -125,3 +127,4 @@ yarn start
 
 -  Multiple image upload when publishing an offer
 -  User profile page (with user info update)
+-  Responsive design
